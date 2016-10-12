@@ -1,1 +1,1 @@
-# Hack Reactor Alumni Portel
+# Hack Reactor Alumni Portal
