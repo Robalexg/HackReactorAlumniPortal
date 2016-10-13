@@ -8,7 +8,8 @@ Getting Started
 2. Run *npm install*
 3. Navigate to **/client**  
 4. Run *bower install*
-5. Navigate to **/server/config/auth-example** 
-    a. Ping Admin for FB authentication credentials, or go create your own at https://developers.facebook.com/docs/facebook-login/
-6. Navigate to **/server** && run *nodemon server.js*
-7. Enjoy!
+5. Ping Admin for FB authentication credentials, or create your own at https://developers.facebook.com/docs/facebook-login/
+6. Navigate to **/server/config/auth-example.js**, update credentials, and rename file to **auth.js**
+6. Navigate to **/server** 
+7. Run *nodemon server.js*
+8. Hack on!
