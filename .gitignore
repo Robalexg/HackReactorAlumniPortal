@@ -1,0 +1,6 @@
+# Dependency directories
+client/bower_components
+node_modules
+.DS_Store
+server/config/auth.js
+npm-git debug.log
