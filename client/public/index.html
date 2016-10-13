@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='reactorLounge'>
 <head>
 	<title>Hack Reactor Portal</title>
 	<script type="text/javascript" src = "../bower_components/jquery/dist/jquery.js"></script>
@@ -12,9 +12,17 @@
 
 </head>
 <body>
+  <div ng-view></div>
 	<h1>Please  sign in</h1>
 	<a class="btn btn-block btn-social btn-facebook">
     <span class="fa fa-facebook"></span> Sign in with facebook
   </a>
+	
+	<script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.js"></script>
+    <script src="../app/controller/gencontroller.js"></script>
+    <script src="../app/services/genservices.js"></script>
+    <script src="../app/app.js"></script>
+
 </body>
 </html>

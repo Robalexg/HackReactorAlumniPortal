@@ -1,9 +1,12 @@
-<div id="msgcontainer">
-  <div id="postmsg" class="post">
+<div id='msgcontainer'>
+  <div id='postmsg' class='post'>
     <form name='msgsubmit'>
-      <input name = "text" id='postbox'>
-    <button type="submit" id="buttonpost" value="post"/> Post </button>
+      <input name = 'text' id='postbox' ng-model='msgpost'>
+    <button type='submit' id='buttonpost' value='post'/> Post </button>
     </form>
+  </div>
+  <div class='msgs'>
+    <div class='msg' ng-repeat='msg in data.msgs'></div>
   </div>
 </div>
 

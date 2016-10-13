@@ -1,13 +1,13 @@
-angular.module('reactorLounge.gen', [])
+angular.module('reactorLounge.general', [])
 
 .controller('GenController', function ($scope, General) {
   $scope.data = {}
 
   //get messages from server
-  var initialMsgs = function(){
+  $scope.initialMsgs = function(){
     General.getMsg()
       .then(function(msg){
-       $scope.data.msg = msg;
+       $scope.data.msgs = msg;
       })
       .catch(function (error) {
         console.error(error);
@@ -15,10 +15,10 @@ angular.module('reactorLounge.gen', [])
   }
 
 //post messages on submit
-  var postMesg = function(){
+  $scope.postMesg = function(){
     General.addMsg()
       .then(function(){
-
+        console.log('message has been posted')
       })
       .catch(function (error) {
         console.error(error);
@@ -26,5 +26,5 @@ angular.module('reactorLounge.gen', [])
   }
 
 //gets messages when general is loaded 
-  initialMsgs();
+  $scope.initialMsgs();
 });
