@@ -1,0 +1,11 @@
+h1{
+	font-size: 100px;
+	text-align: center; 
+}
+
+.btn-block{
+	background-color: #3B5998;
+	margin-left: 40%;
+	display: inline-block;
+
+}
