@@ -7,7 +7,7 @@ angular.module('reactorlounge', [
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
      .when('/', {
-        templateUrl: '../app/views/login.html',
+        templateUrl: '../app/views/loginPage.html',
         controller: 'LoginController' //ROBERT: rename this as you see fit
       }) 
   	  .when('/profile', {

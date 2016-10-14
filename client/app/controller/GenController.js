@@ -1,6 +1,6 @@
-angular.module('reactorLounge.general', [])
+angular.module('reactorlounge.general', [])
 
-.controller('GenController', function ($scope, General) {
+.controller('GenController', ['$scope', 'General' function ($scope, General) {
   $scope.data = {}
 
   //get messages from server
@@ -29,4 +29,4 @@ angular.module('reactorLounge.general', [])
 
 //gets messages when general is loaded 
  initialMsgs();
-});
+}]);

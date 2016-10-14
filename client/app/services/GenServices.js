@@ -1,29 +1,26 @@
-angular.module('reactorLounge.services', [])
+angular.module('reactorlounge.services', [])
 
-.factory('General', function ($http) {
-  
-  //get request to fetch all messages from /messages
-  var getMsg = function () {
-    return $http({
-      method: 'GET',
-      url: '/messages'
-    })
-    .then(function (resp) {
-      return resp;
-    });
-  };
-
- //post request to add a message to /messages 
-  var addMsg = function (Msg) {
-    return $http({
-      method: 'POST',
-      url: '/messages',
-      data: Msg
-    });
-  };
-
+.factory('General', ['$http', function ($http) {
   return {
-    getMsg: getMsg,
-    addMsg: addMsg
-  };
-  })
+  //get request to fetch all messages from /messages
+    getMsg: function () {
+      return $http({
+        method: 'GET',
+        url: '/messages'
+      })
+      .then(function (resp) {
+        return resp;
+      });
+    },    
+ //post request to add a message to /messages 
+    addMsg: function (Msg) {
+      return $http({
+        method: 'POST',
+        url: '/messages',
+        data: Msg
+      });
+    };
+  }
+}]);
+
+
