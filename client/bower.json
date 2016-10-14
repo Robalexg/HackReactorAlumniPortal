@@ -1,11 +1,12 @@
 {
-  "name": "Hack Reactor Portal",
+  "name": "reactor-lounge",
+  "version": "1.0.0",
   "main": "server.js",
   "authors": [
     "The Collective"
   ],
   "description": "",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "homepage": "",
   "private": true,
   "ignore": [
@@ -13,12 +14,15 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+     "client/lib"
   ],
   "dependencies": {
     "materialize": "^0.97.7",
     "jquery": "^3.1.1",
-    "angular": "^1.5.8",
+    "angular": "~1.5.8",
+    "angular-route": "~1.5.8",
+    "angular-mocks": "~1.5.8",
     "font-awesome": "^4.6.3"
   }
 }
