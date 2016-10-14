@@ -1,5 +1,7 @@
 angular.module('reactorlounge', [
   'ngRoute', 
+  'reactorLounge.services',
+  'reactorLounge.general',
   'reactorlounge.profilePage'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
@@ -12,6 +14,10 @@ angular.module('reactorlounge', [
         templateUrl: '../app/views/profilePage.html',
         controller: 'ProfilePageController'
       })
+      .when('/general', {
+      templateUrl: '../app/views/general.html',
+      controller: 'GenController'
+    })
       .otherwise({
         redirectTo: 'http://www.google.com'
       });
@@ -52,3 +58,4 @@ angular.module('reactorlounge', [
 //       $location.path('/signin');
 //     }
 //   });
+>>>>>>> e2375f7b61181918f06b9288510b909ab98b3b08
