@@ -10,7 +10,7 @@ app.get("/",function (req,res) {
 	res.sendFile(path.join(__dirname ,"../client/public/index.html"))
 })
 
-app.get("/auth/facebook",)
+app.get("/auth/facebook")
 
 
 

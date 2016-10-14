@@ -7,7 +7,7 @@ angular.module('reactorLounge', [
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
     .when('/general', {
-      templateUrl: 'app/views/general.html',
+      templateUrl: 'views/general.html',
       controller: 'GenController'
     })
     //add routes and their controller and templateURL

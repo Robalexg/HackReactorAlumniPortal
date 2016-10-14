@@ -1,12 +1,13 @@
 <div id='msgcontainer'>
   <div id='postmsg' class='post'>
-    <form name='msgsubmit'>
+    <form name='msgsubmit' ng-submit="postMsg()" novalidate>
       <input name = 'text' id='postbox' ng-model='msgpost'>
     <button type='submit' id='buttonpost' value='post'/> Post </button>
+    </input>
     </form>
   </div>
   <div class='msgs'>
-    <div class='msg' ng-repeat='msg in data.msgs'></div>
+    <div class='msg' ng-repeat='msg in data.msgs'> {{msg}}</div>
   </div>
 </div>
 

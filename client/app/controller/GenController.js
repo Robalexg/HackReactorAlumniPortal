@@ -4,7 +4,7 @@ angular.module('reactorLounge.general', [])
   $scope.data = {}
 
   //get messages from server
-  $scope.initialMsgs = function(){
+  var initialMsgs = function(){
     General.getMsg()
       .then(function(msg){
        $scope.data.msgs = msg;
@@ -14,11 +14,13 @@ angular.module('reactorLounge.general', [])
       });
   }
 
+  $scope.msgs = {}
 //post messages on submit
-  $scope.postMesg = function(){
-    General.addMsg()
+  $scope.postMsg = function(){
+    General.addMsg($scope.msgs)
       .then(function(){
-        console.log('message has been posted')
+        console.log('message has been posted');
+        initialMsgs()
       })
       .catch(function (error) {
         console.error(error);
@@ -26,5 +28,5 @@ angular.module('reactorLounge.general', [])
   }
 
 //gets messages when general is loaded 
-  $scope.initialMsgs();
+ initialMsgs();
 });
