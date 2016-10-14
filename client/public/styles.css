@@ -9,3 +9,8 @@ h1{
 	display: inline-block;
 
 }
+
+.profilePic {
+		height: 300px;
+		width: 300px;
+}
