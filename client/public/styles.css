@@ -24,3 +24,8 @@ h1{
 	background-image: url('logoo.png');
 	background-repeat: no-repeat;
 }
+
+.profilePic {
+		height: 300px;
+		width: 300px;
+}
