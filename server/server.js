@@ -1,20 +1,26 @@
 var express = require("express")
 var path = require("path")
-var app = express()
-var passport = require("passport-facebook")
+var app = express() 
+var configKnex = require("../knexfile.js")
+var middleware = require("./config/middleware")
+var authFacebook = require('./config/passport.js')
+var passport = require("passport")
+var knex = require('knex')(configKnex.development)
+ knex.migrate.latest([configKnex])
 
-
-app.use(express.static(path.join(__dirname,"../client/")))
+authFacebook(passport,knex)
+middleware(app,express)
 
 app.get("/",function (req,res) {
 	res.sendFile(path.join(__dirname ,"../client/public/index.html"))
 })
 
-app.get("/auth/facebook",)
-
-
-
-
+app.get("/success",function (req,res) {
+	res.end("success")
+})
+app.get('/fail',function (req,res) {
+	res.end("nahhh")
+})
 
 
 
