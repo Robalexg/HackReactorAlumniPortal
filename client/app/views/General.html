@@ -1,14 +1,48 @@
+<style>
+  form {
+    width:50%; 
+    border:2px solid black; 
+    margin: 20px auto
+  }
+  #postmsg {
+    padding: 20px;
+  }
+
+</style>
+
+
 <div id='msgcontainer'>
   <div id='postmsg' class='post'>
     <form name='msgsubmit' ng-submit="postMsg()" novalidate>
       <input name = 'text' id='postbox' ng-model='msgpost'>
     <button type='submit' id='buttonpost' value='post'/> Post </button>
-    </input>
+    </input> 
+    <!--  Begin FaceBookLike -->
+   
+ <!--   <button ng-click="like(1)">Likes</button>
+   {{likes}}
+   <ul>
+   <li ng-repeat="user in users">{{user}}</li>
+   </ul> -->
+   <div class="fb-like" data-href="http://localhost:3000/#/general" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
+   
     </form>
   </div>
   <div class='msgs'>
     <div class='msg'> </div>
   </div>
 
+
 </div>
 
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1001217903320471";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

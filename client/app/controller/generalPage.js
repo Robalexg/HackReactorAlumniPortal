@@ -1,32 +1,32 @@
 angular.module('reactorlounge.generalPage', [])
 
 .controller('GeneralFeedController', ['$scope', 'generalFeed', function ($scope, generalFeed) {
-//   $scope.data = {}
 
-//   //get messages from server
-//   var initialMsgs = function(){
-//     generalFeed.getMsg()
-//       .then(function(msg){
-//        $scope.data.msgs = msg;
-//       })
-//       .catch(function (error) {
-//         console.error(error);
-//       });
-//   }
+var messages = [
+	{messageId:1, like:0, users:["Robert", "christina", "Kendrick"]},
+	{messageId:2, like:0, users:["Robert"]},
+	{messageId:3, like:0, users:["Robert","christina"]},
+	{messageId:4, like:0, users:["Robert", "christina", "Tulasi"]},
+	{messageId:5, like:0, users:["Robert", "Tulasi"]}
+]
 
-//   $scope.msgs = {}
-// //post messages on submit
-//   $scope.postMsg = function(){
-//     generalFeed.addMsg($scope.msgs)
-//       .then(function(){
-//         console.log('message has been posted');
-//         initialMsgs()
-//       })
-//       .catch(function (error) {
-//         console.error(error);
-//       });
-//   }
 
-// //gets messages when general is loaded
-//  initialMsgs();
+
+$scope.like = function (messageId){ 
+	
+	messages.forEach(function(message){ 
+         
+		if (message.messageId === messageId){
+	
+
+
+         $scope.likes=message.like++; 
+         $scope.users= message.users;
+		   } 
+
+	})
+}
+
+
+
 }]);
