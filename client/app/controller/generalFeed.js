@@ -1,11 +1,11 @@
 angular.module('reactorlounge.general', [])
 
-.controller('GenController', ['$scope', 'General' function ($scope, General) {
+.controller('GeneralFeedController', ['$scope', 'generalFeed', function ($scope, generalFeed) {
   $scope.data = {}
 
   //get messages from server
   var initialMsgs = function(){
-    General.getMsg()
+    generalFeed.getMsg()
       .then(function(msg){
        $scope.data.msgs = msg;
       })
@@ -17,7 +17,7 @@ angular.module('reactorlounge.general', [])
   $scope.msgs = {}
 //post messages on submit
   $scope.postMsg = function(){
-    General.addMsg($scope.msgs)
+    generalFeed.addMsg($scope.msgs)
       .then(function(){
         console.log('message has been posted');
         initialMsgs()
@@ -27,6 +27,6 @@ angular.module('reactorlounge.general', [])
       });
   }
 
-//gets messages when general is loaded 
+//gets messages when general is loaded
  initialMsgs();
 }]);
