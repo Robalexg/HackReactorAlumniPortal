@@ -6,7 +6,7 @@ var middleware = require("./config/middleware")
 var authFacebook = require('./config/passport.js')
 var passport = require("passport")
 var knex = require('knex')(configKnex.development)
- knex.migrate.latest([configKnex])
+knex.migrate.latest([configKnex])
 
 authFacebook(passport,knex)
 middleware(app,express)
@@ -20,6 +20,12 @@ app.get("/success",function (req,res) {
 })
 app.get('/fail',function (req,res) {
 	res.end("nahhh")
+})
+
+app.get('/messages',function(req,res){
+	knex('messages').select().then(function (table) {
+		res.setStatus(200).json(table)
+	})
 })
 
 
