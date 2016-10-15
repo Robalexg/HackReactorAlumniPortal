@@ -2,31 +2,37 @@ angular.module('reactorlounge.generalPage', [])
 
 .controller('GeneralFeedController', ['$scope', 'generalFeed', function ($scope, generalFeed) {
 
-var messages = [
-	{messageId:1, like:0, users:["Robert", "christina", "Kendrick"]},
-	{messageId:2, like:0, users:["Robert"]},
-	{messageId:3, like:0, users:["Robert","christina"]},
-	{messageId:4, like:0, users:["Robert", "christina", "Tulasi"]},
-	{messageId:5, like:0, users:["Robert", "Tulasi"]}
-]
+  $scope.data = {}
+  // $scope.data.msgs = [{userId: 'Christina', created_at: 'October 15', content: 'This is great'}, {name: 'Robert', date: 'October 15', message: 'Im a genius'}, {name: 'Kendrick', date: 'October 15', message: 'I frequent Youtuber'}, {name: 'Tulasi', date: 'October 15', message: 'Im awesome'}];
 
+  //get messages from server
+  var initialMsgs = function(){
+    generalFeed.getMsg()
+      .then(function(msg){
+       $scope.data.msgs = msg;
+       console.log("DATA",$scope.data.msgs)
+       console.log('got msg', msg)
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }
 
+//post messages on submit
+  $scope.postMsg = function(){
+        console.log('message has been posted');
+    generalFeed.addMsg($scope.msg)
+      .then(function(){
+        initialMsgs()
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }
 
-$scope.like = function (messageId){ 
-	
-	messages.forEach(function(message){ 
-         
-		if (message.messageId === messageId){
-	
+// 
 
-
-         $scope.likes=message.like++; 
-         $scope.users= message.users;
-		   } 
-
-	})
-}
-
-
+//gets messages when general is loaded
+ initialMsgs();
 
 }]);

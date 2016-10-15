@@ -7,9 +7,8 @@ angular.module('reactorlounge.services', [])
       return $http({
         method: 'GET',
         url: '/messages'
-      })
-      .then(function (resp) {
-        return resp;
+      }).then(function(resp) {
+        return resp.data
       })
     },
  //post request to add a message to /messages
@@ -17,7 +16,7 @@ angular.module('reactorlounge.services', [])
       return $http({
         method: 'POST',
         url: '/messages',
-        data: Msg
+        data: {content: Msg}
       })
     }
   }

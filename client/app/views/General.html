@@ -1,35 +1,45 @@
-<style>
-  form {
-    width:50%; 
-    border:2px solid black; 
-    margin: 20px auto
-  }
-  #postmsg {
-    padding: 20px;
-  }
 
-</style>
+<div id='gencontainer'>
 
+  <nav>
+    <div class="nav-wrapper">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label for="search"><i class="material-icons">search</i></label>
+          <i class="material-icons">close</i>
+        </div>
+      </form>
+    </div>
+  </nav>
 
-<div id='msgcontainer'>
-  <div id='postmsg' class='post'>
-    <form name='msgsubmit' ng-submit="postMsg()" novalidate>
-      <input name = 'text' id='postbox' ng-model='msgpost'>
-    <button type='submit' id='buttonpost' value='post'/> Post </button>
-    </input> 
-    <!--  Begin FaceBookLike -->
-   
- <!--   <button ng-click="like(1)">Likes</button>
-   {{likes}}
-   <ul>
-   <li ng-repeat="user in users">{{user}}</li>
-   </ul> -->
-   <div class="fb-like" data-href="http://localhost:3000/#/general" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>
-   
-    </form>
-  </div>
-  <div class='msgs'>
-    <div class='msg'> </div>
+  <form ng-submit="postMsg()">
+  <div class='valign center-block"'>
+    <div class="input-field col s12">
+      <textarea ng-model='msg'id="textarea1" class="materialize-textarea"></textarea>
+      <label for="textarea1">Write a post</label>
+      <button type='submit' id='buttonpost' value='post'/> Post </button>
+      </div>
+   <form>
+
+    <div id='post' class="col s12 m7">
+    <div class="card horizontal">
+      <div class="card-image">
+       <!--  <img src="http://lorempixel.com/100/190/nature/6"> -->
+      </div>
+      <div class="card-stacked">
+        <div class="card-content" ng-repeat='message in data.msgs'>
+
+          <p class='#304ffe indigo-text text-accent-4'>{{message.userId}}</p>
+           <p>Message: {{message.content}}</p>
+           <p>Date: {{message.created_at | date:format:timezone}}</p>
+        </div>
+        <div class="card-action">
+         <!--  <a href="#">This is a link</a> -->
+        </div>
+      </div>
+    </div>
+
   </div>
 
 
@@ -38,11 +48,4 @@
 
 
 
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1001217903320471";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
