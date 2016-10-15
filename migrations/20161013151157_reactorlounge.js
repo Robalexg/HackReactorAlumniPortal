@@ -17,8 +17,9 @@ exports.up = function(knex, Promise) {
   	knex.schema.createTable("messages",function (table) {
   		table.increments("id").primary()
   		table.string("content",200);
+      table.integer("likes");
 			table.integer('userId',11).unsigned().references('id').inTable('user')
-			table.dateTime("created_at");
+			table.timestamp("created_at");
   	}).then(function(){
   		console.log("Created Message Table")
   	})
