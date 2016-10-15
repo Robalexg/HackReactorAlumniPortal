@@ -1,8 +1,8 @@
 angular.module('reactorlounge', [
   'ngRoute',
   'reactorlounge.services',
-  // 'reactorlounge.generalFeed',
-  // 'reactorlounge.profilePage',
+  'reactorlounge.profilePage',
+  'reactorlounge.generalPage',
   'reactorlounge.loginPage'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){

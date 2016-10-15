@@ -1,6 +1,6 @@
 angular.module('reactorlounge.services', [])
 
-.factory('general', ['$http', function ($http) {
+.factory('generalFeed', ['$http', function ($http) {
   return {
   //get request to fetch all messages from /messages
     getMsg: function () {
@@ -18,7 +18,7 @@ angular.module('reactorlounge.services', [])
         method: 'POST',
         url: '/messages',
         data: Msg
-      });
+      })
     }
   }
 }]);
