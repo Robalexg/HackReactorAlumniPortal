@@ -1,22 +1,23 @@
 angular.module('reactorlounge', [
-  'ngRoute', 
-  'reactorLounge.services',
-  'reactorLounge.general',
-  'reactorlounge.profilePage'
+  'ngRoute',
+  'reactorlounge.services',
+  // 'reactorlounge.generalFeed',
+  // 'reactorlounge.profilePage',
+  'reactorlounge.loginPage'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
      .when('/', {
         templateUrl: '../app/views/loginPage.html',
-        controller: 'LoginController' //ROBERT: rename this as you see fit
-      }) 
+        controller: 'LoginController'
+      })
   	  .when('/profile', {
         templateUrl: '../app/views/profilePage.html',
         controller: 'ProfilePageController'
       })
       .when('/general', {
       templateUrl: '../app/views/general.html',
-      controller: 'GenController'
+      controller: 'GeneralFeedController'
     })
       .otherwise({
         redirectTo: 'http://www.google.com'
@@ -58,4 +59,4 @@ angular.module('reactorlounge', [
 //       $location.path('/signin');
 //     }
 //   });
->>>>>>> e2375f7b61181918f06b9288510b909ab98b3b08
+
