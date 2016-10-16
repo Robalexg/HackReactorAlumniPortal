@@ -13,5 +13,5 @@ module.exports = function (app, express) {
 	app.use(passport.session());
 	app.use(express.static(path.join(__dirname,'../../client/')))
 	app.get('/auth/facebook',passport.authenticate('facebook',{scope:['email']}));
-	app.get('/auth/facebook/callback',passport.authenticate('facebook',{successRedirect: '/success',failureRedirect: '/fail',session:false}));
+	app.get('/auth/facebook/callback',passport.authenticate('facebook',{successRedirect: '/',failureRedirect: '/fail',session:false}));
 };
