@@ -5,24 +5,47 @@ var configKnex = require("../knexfile.js")
 var middleware = require("./config/middleware")
 var authFacebook = require('./config/passport.js')
 var passport = require("passport")
+var uuid = require("uuid")
 var knex = require('knex')(configKnex.development)
 knex.migrate.latest([configKnex])
 
 authFacebook(passport,knex)
 middleware(app,express)
 
-app.get("/",function (req,res) {
-	res.sendFile(path.join(__dirname ,"../client/public/index.html"))
+app.get("/auth",function (req,res) {
+  console.log(req.cookies)
+  if(req.cookies['session-id']){
+    knex("sessions").where({sessionId:req.cookies['session-id']}).then(function(session){
+      if(session != 0){
+        console.log("yay")
+        // res.sendFile(path.join(__dirname ,"../client/public/index.html"))
+        res.sendStatus(200)
+      
+      }else{
+        
+        res.sendStatus(404)
+      }
+    })
+  }
 })
 
 app.get("/success",function (req,res) {
-	res.end("success")
-})
-app.get('/fail',function (req,res) {
-	res.end("nahhh")
+  if(!req.cookies['session-id']){
+    var session = uuid()
+    knex('sessions').insert({sessionId:session}).then(function () {
+      console.log("Made sessionsId")
+      res.set('Set-Cookie', 'session-id=' + session)
+      res.set('Location', "/")
+      res.redirect("/#/general")
+    })
+  }else{
+    res.redirect('/#/general')
+  }
 })
 
+
 app.get('/messages',function(req,res){
+
 	knex('messages').select().then(function (table) {
 		res.status(200).json(table)
 	})
@@ -50,6 +73,14 @@ app.post('/likes',function(req,res){
     .then(function(data){
       console.log("added likes",data)
     })
+})
+
+app.get('/users',function(req,res){
+  knex("user").select().then(function (users) {
+    if(users != 0){
+      res.status(200).json(users)  
+    }
+  })
 })
 
 

@@ -3,7 +3,8 @@ angular.module('reactorlounge', [
   'reactorlounge.services',
   'reactorlounge.profilePage',
   'reactorlounge.generalPage',
-  'reactorlounge.loginPage'
+  'reactorlounge.loginPage',
+  'reactorlounge.searchPage'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
@@ -18,12 +19,24 @@ angular.module('reactorlounge', [
       .when('/general', {
       templateUrl: '../app/views/general.html',
       controller: 'GeneralFeedController'
+    }).when("/search",{
+      templateUrl: "../app/views/searchPage.html",
+      controller: "SearchController"
     })
       .otherwise({
         redirectTo: 'http://www.google.com'
       });
     // $httpProvider.interceptors.push('AttachTokens');
-	}]);
+	}]).run(['$http','$window',function ($http,$window,$location) {
+   $http({
+      method: "GET",
+      url: "/auth"
+    }).then(function () {
+      $window.location.href = '/#/search'
+    }).catch(function () {
+      $window.location.href = '/#/'
+    })
+  }]);
 
   /*TODO:
     - Build out token auhentication
