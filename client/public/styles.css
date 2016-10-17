@@ -43,7 +43,7 @@ h1{
 
 #buttonpost {
     width: 85px;
-    height: 30px;
+    height: 40px;
     border-radius: 4px/4px;
     background: #3b5998;
     font-size: 15px;
@@ -51,6 +51,16 @@ h1{
     color: white;
     position: relative;
     margin-left: 555px;
+}
+
+.upload{
+  position: absolute;
+  float: left;
+  overflow: hidden;
+  padding: 8px;
+  display: block;
+  height: 40px;
+  color: #3b5998;
 }
 
 #textarea{
@@ -99,4 +109,8 @@ h1{
 .name {
   color: #3b5998;
   font-weight: bold;
+}
+
+#camera {
+  color:#3b5998;
 }

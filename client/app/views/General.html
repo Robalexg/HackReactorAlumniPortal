@@ -4,6 +4,9 @@
   <form ng-submit="postMsg()" id='submit'>
     <textarea placeholder="What's on your mind?" ng-model='msg' id="textarea"></textarea>
     <div class='postpad' ng-if="msg != null">
+      <div class="upload">
+        <a ng-click='imageUpload()'><i class="fa fa-camera fa-2x" id='camera';></i></a>
+      </div>
       <input type='submit' id= 'buttonpost' value='post'/></input>
     </div>
   </form>
@@ -23,8 +26,7 @@
           <div class="postedmsgs">
             <p>{{message.content}}</p>
           </div>
-          <div class='msglikes'> This is where the like button will go
-          </div>
+          <div class='msglikes'> This is where the like button will gobnb</div>
        </div>
       </div>
     </div>
