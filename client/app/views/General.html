@@ -20,19 +20,21 @@
   </form>
 </div>
 
-
-<div id='messages' class="col s12 m7">
+<div class='timeline-item'>
+<div id='messages' class="col s12 m7" ng-repeat='message in data.msgs'>
   <div class="card horizontal">
   <div class="card-image">
-<!--     <img src="http://lorempixel.com/100/190/nature/6"> -->
+    <img src="http://lorempixel.com/100/190/nature/6">
   </div>
   <div class="card-stacked">
-    <div class="card-content" ng-repeat='message in data.msgs'>
+    <div class="card-content">
       <p class='#304ffe indigo-text text-accent-4'>Christina</p>
       <p class='bdbdbd grey-text text-lighten-1'>{{message.created_at | date: 'medium'}}</p>
       <p>{{message.content}}</p>
     </div>
+    <div class='msgpad'></div>
   </div>
+</div>
 </div>
 
 
