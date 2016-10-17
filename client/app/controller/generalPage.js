@@ -17,11 +17,12 @@ angular.module('reactorlounge.generalPage', [])
       });
   }
 
-//post messages on submit
+//post messages on submit, clear out msg submit field & make a call to initialmsg to fetch msgs
   $scope.postMsg = function(){
         console.log('message has been posted');
     generalFeed.addMsg($scope.msg)
       .then(function(){
+        $scope.msg=null;
         initialMsgs()
       })
       .catch(function (error) {
