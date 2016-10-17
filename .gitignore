@@ -4,3 +4,7 @@ node_modules
 .DS_Store
 server/config/auth.js
 npm-git debug.log
+
+to start mysql
+mysql.server - start
+mysql -u root 
