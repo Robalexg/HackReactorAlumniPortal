@@ -22,17 +22,33 @@
       </div>
    <form>
 
-    <div id='post' class="col s12 m7">
-    <div class="card horizontal">
-      <div class="card-image">
+       <div id='post' class="col s12 m7">
+        <div class="card horizontal">
+         <div class="card-image">
        <!--  <img src="http://lorempixel.com/100/190/nature/6"> -->
-      </div>
-      <div class="card-stacked">
-        <div class="card-content" ng-repeat='message in data.msgs'>
+          </div>
+          <div class="card-stacked">
+           <div class="card-content" ng-repeat='message in data.msgs'>
 
-          <p class='#304ffe indigo-text text-accent-4'>{{message.userId}}</p>
-           <p>Message: {{message.content}}</p>
-           <p>Date: {{message.created_at | date:format:timezone}}</p>
+             <p class='#304ffe indigo-text text-accent-4'>{{message.userId}}</p>
+             <p>Message: {{message.content}}</p>
+              <p>Date: {{message.created_at | date:format:timezone}}</p> 
+     
+       <!-- Like Function begin  -->
+          <span ng-init="status=false"  ng-click="status =!status; addLike(status,message.id, message.likes)"> 
+           <span id= {{message.id}}><i class="fa fa-thumbs-up"></i> Like 
+            </span> 
+            </span>
+             {{message.likes}}
+
+         <!-- Like End  -->
+
+
+
+
+
+
+
         </div>
         <div class="card-action">
          <!--  <a href="#">This is a link</a> -->

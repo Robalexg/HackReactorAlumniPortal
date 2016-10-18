@@ -7,7 +7,8 @@ module.exports = {
       host: 'localhost',
       user: 'root',
       password: '',
-      database: 'reactorlounge'
+      database: 'reactorlounge',
+      multipleStatements: true
     }
   }
 };
