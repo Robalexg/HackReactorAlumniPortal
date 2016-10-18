@@ -50,7 +50,8 @@ h1{
     outline: none;
     color: white;
     position: relative;
-    margin-left: 555px;
+    margin-left: 85%;
+    padding: 8px;
 }
 
 .upload{

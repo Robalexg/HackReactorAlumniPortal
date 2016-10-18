@@ -15,7 +15,7 @@
     "bower_components",
     "test",
     "tests",
-     "client/lib"
+    "client/lib"
   ],
   "dependencies": {
     "materialize": "^0.97.7",
@@ -23,6 +23,7 @@
     "angular": "~1.5.8",
     "angular-route": "~1.5.8",
     "angular-mocks": "~1.5.8",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "angular-moment": "^1.0.0"
   }
 }

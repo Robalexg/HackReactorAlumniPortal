@@ -1,9 +1,9 @@
-angular.module('reactorlounge.generalPage', [])
+angular.module('reactorlounge.generalPage', ['angularMoment'])
 
-.controller('GeneralFeedController', ['$scope', 'generalFeed', function ($scope, generalFeed) {
+.controller('GeneralFeedController', ['$scope', 'generalFeed', 'moment', function ($scope, generalFeed, moment) {
   $scope.data = {}
   // $scope.data.msgs = [{userId: 'Christina', created_at: 'October 15', content: 'This is great'}, {name: 'Robert', date: 'October 15', message: 'Im a genius'}, {name: 'Kendrick', date: 'October 15', message: 'I frequent Youtuber'}, {name: 'Tulasi', date: 'October 15', message: 'Im awesome'}];
-
+  $scope.exampleDate = moment().hour(8).minute(0).second(0).toDate();
   //get messages from server
   var initialMsgs = function(){
     generalFeed.getMsg()
