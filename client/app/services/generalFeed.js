@@ -8,15 +8,31 @@ angular.module('reactorlounge.services', [])
         method: 'GET',
         url: '/messages'
       }).then(function(resp) {
-        return resp.data
-      })
+        return resp.data;
+      })  
     },
  //post request to add a message to /messages
-    addMsg: function (Msg, Url) {
+    addMsg: function (Msg) {
       return $http({
-        method: 'POST',
-        url: '/messages',
-        data: {content: Msg, msgImageUrl: Url}
+        method: 'GET',
+        url: '/sessions'
+      }).then(function(resp){
+        var userId = resp.data[0].userId
+        return $http({
+          method: 'POST',
+          url: '/user',
+          data: {userId: userId}
+        })
+      }).then(function(resp){
+        console.log('this is resp data', resp.data[0])
+        var firstName = resp.data[0].firstName
+        var lastName = resp.data[0].lastName
+        var avatar = resp.data[0].photolink
+        return $http({
+          method: 'POST',
+          url: '/messages',
+          data: {firstName: firstName, lastName: lastName, photolink: avatar, content: Msg}
+        })
       })
     },
   //get request to get comments from /comments

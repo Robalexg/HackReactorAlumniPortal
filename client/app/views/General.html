@@ -17,10 +17,10 @@
       <div class='card'>
         <div class='topwrap'>
           <div class='image'>
-            <img class='resize' src='https://ipetcompanion.com/feedapuppy/styles/media/puppy.jpg'>   
+            <img class='resize' ng-src={{message.photolink}}>   
           </div>
           <div class='namedate'>
-            <p class='name'>Christina</p>
+            <p class='name'>{{message.firstName}} {{message.lastName}}</p>
             <p class='bdbdbd grey-text text-lighten-1' id='datetime'><span title="{{message.created_at | amDateFormat: 'MMMM Do YYYY, h:mm a' }}">{{message.created_at | amCalendar:referenceTime:formats}}</span></p>
           </div>
           <div class='postedmsgs'>

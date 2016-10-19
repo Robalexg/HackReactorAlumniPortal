@@ -40,7 +40,7 @@ module.exports = function(passport,knex,app){
 		  if(!req.cookies['session-id']){
 		    var session = uuid();
 		    knex('sessions').insert({sessionId:session,userId:userId}).then(function () {
-		      res.set('Set-Cookie', 'session-id=' + session)
+		      res.set('Set-Cookie', 'sessionId=' + session)
 		      res.set('Location', "/")
 		      res.redirect("/#/general")
 		    })
