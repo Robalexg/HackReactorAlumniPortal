@@ -4,3 +4,5 @@ node_modules
 .DS_Store
 server/config/auth.js
 npm-git debug.log
+server/npm-debug.log
+client/test/npm-debug.log

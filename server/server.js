@@ -32,6 +32,7 @@ app.get('/messages',function(req,res){
   })
 })
 
+
 app.post('/messages',function(req,res){
   console.log('############', req.body)
   knex('messages').insert({content: req.body.content})
@@ -41,17 +42,20 @@ app.post('/messages',function(req,res){
   })
 })
 
+// Updating Likes in the  Database. 
 app.post('/likes',function(req,res){
-  console.log('############', req.body)
-  Knex('messages')
-    .where('id', req.body.id)
-    .update({
-    likes: req.body.likes,
-    })
+  console.log('############ in likessss', req.body)
+  knex('messages')
+    .where({ id: req.body.content})
+    .update({ likes: req.body.like})
     .then(function(data){
       console.log("added likes",data)
+    }).catch(function(err){
+      console.log("errr", err);
     })
-})
+   })
+
+
 
 
 
