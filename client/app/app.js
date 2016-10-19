@@ -3,7 +3,7 @@ angular.module('reactorlounge', [
   'reactorlounge.services',
   'reactorlounge.profilePage',
   'reactorlounge.generalPage',
-  'reactorlounge.loginPage'
+  'reactorlounge.loginPage',
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
@@ -19,8 +19,20 @@ angular.module('reactorlounge', [
       templateUrl: '../app/views/general.html',
       controller: 'GeneralFeedController'
     })
+      .when('/resources', {
+      templateUrl: '../app/views/comingSoonPage.html',
+    })
+      .when('/events', {
+      templateUrl: '../app/views/comingSoonPage.html',
+    })
+      .when('/lectures', {
+      templateUrl: '../app/views/comingSoonPage.html',
+    })
+      .when('/jobs', {
+      templateUrl: '../app/views/comingSoonPage.html',
+    })
       .otherwise({
-        redirectTo: 'http://www.google.com'
+        redirectTo: '/'
       });
     // $httpProvider.interceptors.push('AttachTokens');
 	}]);

@@ -13,28 +13,29 @@
     </div>
   </nav>
 
-  <form ng-submit="postMsg()">
-  <div class='valign center-block"'>
-    <div class="input-field col s12">
-      <textarea ng-model='msg'id="textarea1" class="materialize-textarea"></textarea>
-      <label for="textarea1">Write a post</label>
-      <button type='submit' id='buttonpost' value='post'/> Post </button>
-      </div>
-   <form>
+<div class='timeline-item'>
+  <form ng-submit="postMsg()" id='submit'>
+    <textarea ng-model='msg' id="textarea"></textarea>
+    <div class='postpad' ng-if="msg != null">
+      <input type='submit' id= 'buttonpost' value='post'/></input>
+    </div>
+  </form>
+</div>
 
-       <div id='post' class="col s12 m7">
-        <div class="card horizontal">
-         <div class="card-image">
-       <!--  <img src="http://lorempixel.com/100/190/nature/6"> -->
-          </div>
-          <div class="card-stacked">
-           <div class="card-content" ng-repeat='message in data.msgs'>
-
-             <p class='#304ffe indigo-text text-accent-4'>{{message.userId}}</p>
-             <p>Message: {{message.content}}</p>
-              <p>Date: {{message.created_at | date:format:timezone}}</p> 
-     
-       <!-- Like Function begin  -->
+<div class='timeline-item'>
+<div id='messages' class="col s12 m7" ng-repeat='message in data.msgs'>
+  <div class="card horizontal">
+  <div class="card-image">
+    <img src="http://lorempixel.com/100/190/nature/6">
+  </div>
+  <div class="card-stacked">
+    <div class="card-content">
+      <p class='#304ffe indigo-text text-accent-4'>Christina</p>
+      <p class='bdbdbd grey-text text-lighten-1'>{{message.created_at | date: 'medium'}}</p>
+      <p>{{message.content}}</p>
+    </div>
+    <div class='msgpad'></div>
+           <!-- Like Function begin -->
           <span ng-init="status=false"  ng-click="status =!status; addLike(status,message.id, message.likes)"> 
            <span id= {{message.id}}><i class="fa fa-thumbs-up"></i> Like 
             </span> 
@@ -42,21 +43,9 @@
              {{message.likes}}
 
          <!-- Like End  -->
-
-
-
-
-
-
-
-        </div>
-        <div class="card-action">
-         <!--  <a href="#">This is a link</a> -->
-        </div>
-      </div>
-    </div>
-
   </div>
+</div>
+</div>
 
 
 </div>

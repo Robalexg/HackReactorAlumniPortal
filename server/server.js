@@ -23,7 +23,8 @@ app.get('/fail',function (req,res) {
 })
 
 app.get('/messages',function(req,res){
-	knex('messages').select().then(function (table) {
+	knex.select('*').from('messages').orderBy('created_at', 'desc')
+  .then(function (table) {
 		res.status(200).json(table)
 	})
   .catch(function(err){
