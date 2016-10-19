@@ -54,13 +54,13 @@ h1{
 
 #buttonpost {
     width: 85px;
-    height: 30px;
+    height: 40px;
     border-radius: 4px/4px;
     background: #3b5998;
     font-size: 15px;
     outline: none;
     color: white;
-    position: absolute;
+    position: relative;
     margin-left: 35%;
     padding: 8px;
     display: block;
@@ -85,7 +85,7 @@ h1{
   overflow: hidden;
   padding: 8px;
   display: block;
-  height: 30px;
+  height: 40px;
   color: #3b5998;
 }
 
