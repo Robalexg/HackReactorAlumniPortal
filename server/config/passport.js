@@ -1,7 +1,10 @@
 var configAuth = require("./auth")
 var FacebookStrategy = require("passport-facebook").Strategy;
+var uuid = require("uuid")
 
-module.exports = function(passport,knex){
+
+module.exports = function(passport,knex,app){
+	var userId;
 	passport.use(new FacebookStrategy({
     clientID: configAuth.facebookAuth.clientID,
     clientSecret: configAuth.facebookAuth.clientSecret,
@@ -11,7 +14,6 @@ module.exports = function(passport,knex){
   function(accessToken, refreshToken, profile, cb) {
   	process.nextTick(function () {
   		profile = profile._json
-  		console.log("profile",profile.picture.data.url)
  			knex('user').where({facebookID:profile.id}).then(function(table){
  				if(table.length === 0){
  					knex('user').insert({
@@ -22,22 +24,36 @@ module.exports = function(passport,knex){
  						gender:profile.gender,
  						photolink: profile.picture.data.url
  					})
- 					.then(function (err,user) {
- 							if(err){
- 								return cb(null,err)
- 								console.log('err',err)
- 							}else{
- 								console.log('Inserted',user)
- 								return cb(null,user)
- 							}
+ 					.then(function (user) {
+ 						console.log("user",user)
+ 						userId = user[0]
+						return cb(null,user)
  					})
  				}else{
+ 					userId = table[0].id
  					return cb(null,table)
  				}
  			})
   	})
+
+		app.get("/success",function (req,res) {
+		  if(!req.cookies['session-id']){
+		    var session = uuid();
+		    knex('sessions').insert({sessionId:session,userId:userId}).then(function () {
+		      res.set('Set-Cookie', 'session-id=' + session)
+		      res.set('Location', "/")
+		      res.redirect("/#/general")
+		    })
+		  }else{
+		    res.redirect('/#/general')
+		  }
+		})
+
+
   }
 ));
+
+
 }
 
 
