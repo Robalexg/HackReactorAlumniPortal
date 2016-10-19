@@ -167,3 +167,25 @@ form .progress {
     background: orange;
     width: 0;
 }
+
+#searchPhoto{
+	height: 50px;
+	width: 50px;
+}
+
+.searchWrapper{
+	float: left;
+	width: 18%;
+
+}
+
+#searchName{
+	float: right;
+  margin-top: -3%;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.ng-show { 
+	animation:0.5s flipInX ease; 
+}

@@ -13,7 +13,6 @@ exports.up = function(knex, Promise) {
   	}).then(function () {
   		console.log("Created User Table")
   	}),
-
   	knex.schema.createTable("messages",function (table) {
   		table.increments("id").primary()
   		table.string("content",200);
@@ -34,6 +33,13 @@ exports.up = function(knex, Promise) {
       table.timestamp("created_at");
     }).then(function(){
       console.log("Created Comments Table")
+  	}),
+
+    knex.schema.createTable("sessions",function (table) {
+      table.increments("id").primary()
+      table.string("sessionId");
+    }).then(function () {
+      console.log("Created Sessions Table");
     })
   ])
 };
@@ -41,7 +47,9 @@ exports.up = function(knex, Promise) {
 exports.down = function(knex, Promise) {
   return Promise.all([
   	knex.schema.dropTable("user"),
-  	knex.schema.dropTable("messages")
+    knex.schema.dropTable("comments"),
+  	knex.schema.dropTable("messages"),
+    knex.schema.dropTable("sessions")
   ])
 
 };

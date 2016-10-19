@@ -5,22 +5,26 @@ var configKnex = require("../knexfile.js")
 var middleware = require("./config/middleware")
 var authFacebook = require('./config/passport.js')
 var passport = require("passport")
+var uuid = require("uuid")
 var knex = require('knex')(configKnex.development)
 knex.migrate.latest([configKnex])
 
-authFacebook(passport,knex)
+authFacebook(passport,knex,app)
 middleware(app,express)
 
-app.get("/",function (req,res) {
-	res.sendFile(path.join(__dirname ,"../client/public/index.html"))
+app.get("/auth",function (req,res) {
+  if(req.cookies['session-id']){
+    knex("sessions").where({sessionId:req.cookies['session-id']}).then(function(session){
+      if(session != 0){
+        res.sendStatus(200)      
+      }else{
+        res.sendStatus(401)
+      }
+    })
+  }
 })
 
-app.get("/success",function (req,res) {
-	res.end("success")
-})
-app.get('/fail',function (req,res) {
-	res.end("nahhh")
-})
+
 
 app.get('/messages',function(req,res){
 	knex.select('*').from('messages').orderBy('created_at', 'desc')
@@ -62,7 +66,7 @@ app.post('/comments',function(req,res){
 
 app.post('/likes',function(req,res){
   console.log('############', req.body)
-  Knex('messages')
+  knex('messages')
     .where('id', req.body.id)
     .update({
     likes: req.body.likes,
@@ -70,6 +74,14 @@ app.post('/likes',function(req,res){
     .then(function(data){
       console.log("added likes",data)
     })
+})
+
+app.get('/users',function(req,res){
+  knex("user").select().then(function (users) {
+    if(users != 0){
+      res.status(200).json(users)  
+    }
+  })
 })
 
 
