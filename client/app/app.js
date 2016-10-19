@@ -22,7 +22,7 @@ angular.module('reactorlounge', [
     })
       .when('/upload', {
       templateUrl: '../app/views/uploadPage.html',
-      controller: 'UploadController'
+      controller: 'GeneralFeedController'
     })
       .when('/resources', {
       templateUrl: '../app/views/comingSoonPage.html',

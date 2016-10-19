@@ -12,11 +12,11 @@ angular.module('reactorlounge.services', [])
       })
     },
  //post request to add a message to /messages
-    addMsg: function (Msg) {
+    addMsg: function (Msg, Url) {
       return $http({
         method: 'POST',
         url: '/messages',
-        data: {content: Msg}
+        data: {content: Msg, msgImageUrl: Url}
       })
     },
   //get request to get comments from /comments
@@ -35,7 +35,7 @@ angular.module('reactorlounge.services', [])
           url: '/comments',
           data: {content: Cmt}
       })
-    }
+    },
   }
 }]);
 
