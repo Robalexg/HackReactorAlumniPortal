@@ -3,8 +3,8 @@ angular.module('reactorlounge.uploadPage', ['ngFileUpload', 'ngImgCrop'])
   .controller('UploadController', ['$scope', 'Upload', '$timeout', function($scope, Upload, $timeout, $window){
     $scope.creds = {
       bucket: 'reactorlounge',
-      access_key: 'AKIAI6Z5FB5PVK3WJRMA',
-      secret_key: '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'
+      access_key: '',
+      secret_key: ''
     }
 
     $scope.upload = function() {
