@@ -4,6 +4,7 @@ angular.module('reactorlounge', [
   'reactorlounge.profilePage',
   'reactorlounge.generalPage',
   'reactorlounge.loginPage',
+  'reactorlounge.uploadPage',
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
@@ -18,6 +19,10 @@ angular.module('reactorlounge', [
       .when('/general', {
       templateUrl: '../app/views/general.html',
       controller: 'GeneralFeedController'
+    })
+      .when('/upload', {
+      templateUrl: '../app/views/uploadPage.html',
+      controller: 'UploadController'
     })
       .when('/resources', {
       templateUrl: '../app/views/comingSoonPage.html',

@@ -5,14 +5,14 @@
     <textarea placeholder="What's on your mind?" ng-model='msg' id='textarea'></textarea>
     <div class='postpad' ng-if='msg != null'>
       <div class='upload'>
-        <a href='' ng-click='uploadFile()'><i class='fa fa-camera fa-2x' id='camera'></i></a>
+        <a href='#/upload'><i class='fa fa-camera fa-2x' id='camera'></i></a>
       </div>
       <input type='submit' id= 'buttonpost' value='post'/></input>
     </div>
   </form>
   </div>
 
-  <div class='timeline-item'>
+  <div class='timeline-item' ng-if='data.msgs'>
     <div ng-repeat='message in data.msgs'>
       <div class='card'>
         <div class='topwrap'>
@@ -26,7 +26,27 @@
           <div class='postedmsgs'>
             <p>{{message.content}}</p>
           </div>
-          <div class='msglikes'> This is where the like button will gobnb</div>
+          <div class='msglikes'> This is where the like button will go</div>
+          <div class='commentwrap'>
+            <div class='comment-item'>
+              <form ng-submit='postCmt()' id='submitCmt'>
+              <textarea placeholder="Write a comment" ng-model='cmt' id='textarea2'></textarea>
+              <div class='postpad' ng-if='cmt != null'>
+                  <input type='submit' id= 'buttonpost2' value='post'/></input>
+              </div>
+              </form>
+            </div>
+            <div ng-repeat='comment in data.cmts'>
+              <div class='topcmtwrap'>
+                <div class='cmt-image'>
+                  <img class='resize' src='https://ipetcompanion.com/feedapuppy/styles/media/puppy.jpg'>   
+                </div>
+                <div class='datename'>
+                <p class='name'>{{comment.content}}</p>
+                <p class='bdbdbd grey-text text-lighten-1' id='datetime'>{{comment.created_at}}</p>
+                </div>
+              </div>
+          </div>
        </div>
       </div>
     </div>

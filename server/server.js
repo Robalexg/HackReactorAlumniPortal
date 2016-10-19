@@ -41,6 +41,25 @@ app.post('/messages',function(req,res){
   })
 })
 
+app.get('/comments',function(req,res){
+  knex.select('*').from('comments').orderBy('created_at', 'desc')
+  .then(function (table) {
+    res.status(200).json(table)
+  })
+  .catch(function(err){
+    console.log('this is a get/comments error', err)
+  })
+})
+
+app.post('/comments',function(req,res){
+  console.log('############', req.body)
+  knex('comments').insert({content: req.body.content})
+  .then(function () {
+    console.log('this comment was added')
+    res.status(201).end()
+  })
+})
+
 app.post('/likes',function(req,res){
   console.log('############', req.body)
   Knex('messages')

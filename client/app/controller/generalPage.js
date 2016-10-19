@@ -19,7 +19,6 @@ angular.module('reactorlounge.generalPage', ['angularMoment'])
 
 //post messages on submit, clear out msg submit field & make a call to initialmsg to fetch msgs
   $scope.postMsg = function(){
-        console.log('message has been posted');
     generalFeed.addMsg($scope.msg)
       .then(function(){
         $scope.msg=null;
@@ -30,6 +29,31 @@ angular.module('reactorlounge.generalPage', ['angularMoment'])
       });
   }
 
-//gets messages when general is loaded
+  var initialCmts = function(){
+    generalFeed.getCmt()
+    .then(function(cmt){
+      $scope.data.cmts = cmt;
+      console.log("comments", $scope.data.cmts);
+    })
+    .catch(function(err){
+      console.log('this is a comment error', err);
+    });
+  }
+
+  $scope.postCmt = function(){
+    console.log('these are thecomments', $scope.cmt)
+    generalFeed.addCmt($scope.cmt)
+    .then(function(){
+      $scope.comment=null;
+      initialCmts()
+    })
+    .catch(function(err){
+      console.log('this is a post comment error', err);
+    })
+  }
+
+
+//gets messages and comments when general is loaded
  initialMsgs();
+ initialCmts();
 }]);
