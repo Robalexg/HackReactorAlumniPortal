@@ -52,6 +52,11 @@ h1{
     min-height: 150px;
 }
 
+#uploader {
+  max-width: 800px;
+  min-height: 75px;
+}
+
 
 .comment-item {
     background: #f7f7f7;
@@ -115,12 +120,6 @@ h1{
   background: white;
 }
 
-#gencontainer{
-  width: 50%;
-  margin: auto;
-  background: #f7f7f7;
-}
-
 .image {
   float: left;
   overflow: hidden;
@@ -160,22 +159,9 @@ h1{
   color:#3b5998;
 }
 
-.cropArea {
-    background: #E4E4E4;
-    overflow: hidden;
-    width:500px;
-    height:350px;
-}
-
-.progress div {
-    font-size: smaller;
-    background: orange;
-    width: 0;
-}
-
 .msgImg {
-  height: 500px;
-  width: 350px
+  height: 350px;
+  width: 500px
 }
 
 #searchPhoto{
@@ -206,4 +192,14 @@ h1{
 
 .btn{
   background: transparent;
+}
+
+.prevpic {
+  height: 350px;
+  width: 500px;
+}
+
+.showImg {
+  height: 350px;
+  width: 500px;
 }

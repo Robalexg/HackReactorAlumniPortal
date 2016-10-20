@@ -4,7 +4,6 @@ angular.module('reactorlounge', [
   'reactorlounge.profilePage',
   'reactorlounge.generalPage',
   'reactorlounge.loginPage',
-  'reactorlounge.uploadPage',
   'reactorlounge.searchPage'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){

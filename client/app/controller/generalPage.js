@@ -39,15 +39,15 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'n
       AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
       AWS.config.region = 'us-east-1';
       var bucket = new AWS.S3({ params: { Bucket: $scope.creds.bucket } });
-      if($scope.croppedDataUrl) {
-        var params = { Key: $scope.picFile.name, Body: $scope.croppedDataUrl, ServerSideEncryption: 'AES256' };
+      if($scope.picFile) {
+        var params = { Key: $scope.picFile.name, Body: $scope.picFile, ServerSideEncryption: 'AES256' };
         bucket.putObject(params, function(err, data) {
           if(err) {
             console.log(err.message);
             return false;
           }
           else if(data){
-            $scope.imgUrl = 'reactorlounge.s3.amazonaws.com/' + $scope.picFile.name
+            $scope.imgUrl = 'https://reactorlounge.s3.amazonaws.com/' + $scope.picFile.name
             console.log('Upload Done', $scope.imgUrl);
           }
         })
