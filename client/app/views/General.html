@@ -5,27 +5,25 @@
       <textarea placeholder="What's on your mind?" ng-model='msg' id='textarea'></textarea>
       <div class='postpad' ng-if='msg != null'>
         <div class='upload'>
-          <a href="" ng-click='upload = !upload'><i class='fa fa-camera fa-2x' id='camera'></i></a>
+          <a href="" ng-click='upload = !upload' ><i class='fa fa-camera fa-2x' id='camera'></i></a>
         </div>
         <input type='submit' id= 'buttonpost' value='post'/></input>
       </div>
     </form>
-  <div id='uploader' ng-show='upload'>
-           <div>Crop Image and Upload</div>
-        <button ngf-select ng-model="picFile" accept="image/*">
-            Select Picture</button>
-        </div>
-        <div>
-            <img class='prevpic' ngf-thumbnail="picFile">
-        </div>
-        <button ng-click="upload(picFile, picFile.name)">Upload</button> 
-            
-        <span class="progress" ng-show="progress >= 0">
-          <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
-        </span>
-        <span ng-show="result">Upload Successful</span>
-        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-   </div>
+    <div id='uploader' ng-show='upload'>
+      <button ngf-select ng-model="picFile" accept="image/*">
+          Select Picture</button>
+      <div>
+          <img class='prevpic' ngf-thumbnail="picFile">
+      </div>
+      <button ng-click="upload(picFile, picFile.name)">Upload</button> 
+          
+      <span class="progress" ng-show="progress >= 0">
+        <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+      </span>
+      <span ng-show="result">Upload Successful</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+     </div>
   </div>
 
 
