@@ -1,8 +1,8 @@
 angular.module('reactorlounge.uploadPage', ['ngFileUpload', 'ngImgCrop'])
 
-  .controller('UploadController', ['$scope', 'Upload', '$timeout', function($scope, Upload, $timeout, $window){
+  .controller('UploadController', ['$scope', 'Upload', '$timeout', 'generalFeed', function($scope, Upload, $timeout, generalFeed){
     $scope.creds = {
-      bucket: 'reactorlounge',
+      bucket: '',
       access_key: '',
       secret_key: ''
     }

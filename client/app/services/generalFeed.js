@@ -1,6 +1,6 @@
 angular.module('reactorlounge.services', [])
 
-.factory('generalFeed', ['$http', function ($http, $scope) {
+.factory('generalFeed', ['$http', function ($http) {
   return {
   //get request to fetch all messages from /messages
     getMsg: function () {
@@ -52,6 +52,7 @@ angular.module('reactorlounge.services', [])
           data: {content: Cmt}
       })
     },
+
   }
 }]);
 

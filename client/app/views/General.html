@@ -1,18 +1,43 @@
 <div id='gencontainer'>
 
-  <div class='timeline-item'>
+  <div class='posttimeline'>
   <form ng-submit='postMsg()' id='submit'>
     <textarea placeholder="What's on your mind?" ng-model='msg' id='textarea'></textarea>
     <div class='postpad' ng-if='msg != null'>
       <div class='upload'>
-        <a href='#/upload'><i class='fa fa-camera fa-2x' id='camera'></i></a>
+        <a href='#upload'><i class='fa fa-camera fa-2x' id='camera'></i></a>
       </div>
       <input type='submit' id= 'buttonpost' value='post'/></input>
     </div>
   </form>
+  <div>
+    <div id='uploader'>
+    <form name="myForm">
+        <div>Crop Image and Upload</div>
+        <button ngf-select ng-model="picFile" accept="image/*">
+            Select Picture</button>
+        <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
+             class="cropArea">
+            <img-crop image="picFile  | ngfDataUrl"                 
+            result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
+            </img-crop>
+        </div>
+        <div>
+            <img ng-src="{{croppedDataUrl}}" />
+        </div>
+        <button ng-click="upload(croppedDataUrl, picFile.name)">Submit</button> 
+            
+        <span class="progress" ng-show="progress >= 0">
+          <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+        </span>
+        <span ng-show="result">Upload Successful</span>
+        <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+    </form>
+</div>
+  </div>
   </div>
 
-  <div class='timeline-item' ng-if='data.msgs'>
+  <div class='msgtimeline' ng-if='data.msgs'>
     <div ng-repeat='message in data.msgs'>
       <div class='card'>
         <div class='topwrap'>
@@ -23,6 +48,7 @@
             <p class='name'>{{message.firstName}} {{message.lastName}}</p>
             <p class='bdbdbd grey-text text-lighten-1' id='datetime'><span title="{{message.created_at | amDateFormat: 'MMMM Do YYYY, h:mm a' }}">{{message.created_at | amCalendar:referenceTime:formats}}</span></p>
           </div>
+        </div>
           <div class='postedmsgs'>
             <p>{{message.content}}</p>
           </div>

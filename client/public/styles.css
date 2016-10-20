@@ -30,7 +30,18 @@ h1{
 		width: 300px;
 }
 
-.timeline-item {
+.posttimeline {
+    background: #f7f7f7;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+    padding: 12px;
+    margin: 0 auto;
+    max-width: 800px;
+    min-height: 75px;
+}
+
+.msgtimeline {
     background: #f7f7f7;
     border: 1px solid;
     border-color: #e5e6e9 #dfe0e4 #d0d1d5;
@@ -40,6 +51,7 @@ h1{
     max-width: 800px;
     min-height: 150px;
 }
+
 
 .comment-item {
     background: #f7f7f7;
@@ -61,7 +73,7 @@ h1{
     outline: none;
     color: white;
     position: relative;
-    margin-left: 35%;
+    margin-left: 85%;
     padding: 8px;
     display: block;
 }
@@ -91,7 +103,7 @@ h1{
 
 #textarea{
   width: 99%;
-  height: 150px;
+  height: 30%;
   margin: auto;
   background: white;
 }
@@ -154,14 +166,7 @@ h1{
     width:500px;
     height:350px;
 }
-form .progress {
-    line-height: 15px;
-}
-.progress {
-    display: inline-block;
-    width: 100px;
-    border: 3px groove #CCC;
-}
+
 .progress div {
     font-size: smaller;
     background: orange;
@@ -188,4 +193,12 @@ form .progress {
 
 .ng-show { 
 	animation:0.5s flipInX ease; 
+}
+
+#uploader {
+ padding: 35px
+}
+
+.btn{
+  background: transparent;
 }
