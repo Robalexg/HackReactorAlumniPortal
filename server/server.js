@@ -71,14 +71,26 @@ app.post('/comments',function(req,res){
 app.post('/likes',function(req,res){
   console.log('############ in likessss', req.body)
   knex('messages')
-    .where({ id: req.body.content})
-    .update({ likes: req.body.like})
-    .then(function(data){
-      console.log("added likes",data)
-    }).catch(function(err){
-      console.log("errr", err);
-    })
-   })
+  .where({ id: req.body.content})
+  .update({ likes: req.body.like})
+  .then(function(data){
+    console.log("added likes",data)
+  }).catch(function(err){
+    console.log("errr", err);
+  })
+})
+
+app.post('/cmtlikes',function(req,res){
+  console.log('############ in cmtlikessss', req.body)
+  knex('comments')
+  .where({ id: req.body.commentId})
+  .update({ likes: req.body.like})
+  .then(function(data){
+    console.log("added likes",data)
+  }).catch(function(err){
+    console.log("errr", err);
+  })
+})
 
 app.get('/questions',function(req,res){
   knex.select('*').from('questions')

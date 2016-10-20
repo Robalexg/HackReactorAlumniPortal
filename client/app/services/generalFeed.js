@@ -24,6 +24,15 @@ angular.module('reactorlounge.services', [])
       
       })
     },
+
+  cmtlike: function (id,like) {
+   console.log("u r in the cmt Like ","id",id , "incremented like",like);
+    return $http({
+      method: 'POST',
+      url:    '/cmtlikes', 
+       data: {commentId: id, like: like}
+    })
+  },
  //post request to add a message to /messages
     addMsg: function (Msg, Img) {
       return $http({

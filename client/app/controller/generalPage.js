@@ -86,7 +86,32 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
     });
   }
 
-
+  $scope.addCmtLike = function(status, id, likes){ 
+    if (status){
+      likes++; 
+      $scope.data.msgs.forEach(function(comment){
+        if (comment.id === id){
+        comment.likes++;
+        angular.element('#'+ comment.id).addClass('blue-text'); 
+        }
+      })     
+    } else {
+      likes--; 
+      $scope.data.cmts.forEach(function(comment){
+        if (comment.id === id){
+        comment.likes--;
+        angular.element('#'+ comment.id).removeClass('blue-text');
+        }
+      })  
+    }
+    generalFeed.cmtlike(id, likes)
+    .then(function(){
+     console.log("successs in add like");
+   })
+    .catch(function (error) {
+      console.error(error);
+    });
+  }
   var initialCmts = function(){
     generalFeed.getCmt()
     .then(function(cmt){
