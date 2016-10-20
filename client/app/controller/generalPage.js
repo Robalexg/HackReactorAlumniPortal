@@ -60,7 +60,36 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
       }
     }
 
-//gets messages and comments when general is loaded
+  $scope.addLike = function(status, id, likes){ 
+    if (status){
+      likes++; 
+      $scope.data.msgs.forEach(function(message){
+        if (message.id === id){
+        message.likes++;
+        angular.element('#'+ message.id).addClass('blue-text'); 
+        }
+      })     
+    } else {
+      likes--; 
+      $scope.data.msgs.forEach(function(message){
+        if (message.id === id){
+        message.likes--;
+        angular.element('#'+ message.id).removeClass('blue-text');
+        }
+      })  
+    }
+    generalFeed.addlike(id, likes)
+    .then(function(){
+     console.log("successs in add like");
+   })
+    .catch(function (error) {
+      console.error(error);
+    });
+  }
+
+
+
+//gets messages when general is loaded
  initialMsgs();
 
 }]);

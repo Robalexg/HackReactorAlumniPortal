@@ -5,3 +5,4 @@ node_modules
 server/config/auth.js
 npm-git debug.log
 client/config/s3creds.js
+server/npm-debug.log

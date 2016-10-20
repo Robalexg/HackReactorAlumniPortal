@@ -38,6 +38,7 @@ app.get('/messages',function(req,res){
   })
 })
 
+
 app.post('/messages',function(req,res){
   console.log('############', req.body)
   knex('messages').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink: req.body.photolink, msgImageUrl: req.body.msgImageUrl})
@@ -66,16 +67,37 @@ app.post('/comments',function(req,res){
   })
 })
 
+// Updating Likes in the  Database. 
 app.post('/likes',function(req,res){
-  console.log('############', req.body)
+  console.log('############ in likessss', req.body)
   knex('messages')
-    .where('id', req.body.id)
-    .update({
-    likes: req.body.likes,
-    })
+    .where({ id: req.body.content})
+    .update({ likes: req.body.like})
     .then(function(data){
       console.log("added likes",data)
+    }).catch(function(err){
+      console.log("errr", err);
     })
+   })
+
+app.get('/questions',function(req,res){
+  knex.select('*').from('questions')
+  .then(function (table) {
+    res.status(200).json(table)
+  })
+  .catch(function(err){
+    console.log('this is a get/messages error', err)
+  })
+})
+
+
+app.post('/questions',function(req,res){
+  console.log("Helllo U r in Questions post", req.body)
+  knex('questions').insert({content: req.body.content})
+  .then(function () {
+    console.log('this was added')
+    res.status(201).end()
+  })
 })
 
 app.get('/users',function(req,res){
@@ -106,8 +128,25 @@ app.post('/user',function(req,res){
   })
 })
 
-app.get('/user',function(req,res){
-  res.status(200).send()
+app.get('/Answers',function(req,res){
+ knex('Questions')
+.join('Answers', 'Questions.id', '=', 'Answers.qid')
+.select('Questions.id', 'Questions.Content','Answers.id','Answers.Answer','Answers.qid ')
+ .then(function (table) { 
+    res.status(200).json(table)
+  })
+  .catch(function(err){
+    console.log('this is a get/messages error', err)
+  })
+ })
+
+app.post('/Answers',function(req,res){
+   console.log('Answersssssss Knex', req.body)
+  knex.insert({Answer:req.body.answer, qid:req.body.content}).into('Answers')
+  .then(function () {
+    console.log('this was added')
+    res.status(201).end()
+  })
 })
 
 

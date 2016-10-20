@@ -1,3 +1,4 @@
+
 <div id='gencontainer'>
 
   <div class='posttimeline'>
@@ -45,7 +46,13 @@
           <div class='msgImg' ng-show='message.msgImageUrl'>
             <img class='showImg' ng-src={{message.msgImageUrl}}>
           </div>
-          <div class='msglikes'> This is where the like button will go</div>
+          <div class='msglikes'> 
+            <span ng-init="status=false"  ng-click="status =!status; addLike(status,message.id, message.likes)"> 
+              <span id= {{message.id}}><i class="fa fa-thumbs-up"></i> Like 
+              </span> 
+            </span>
+             {{message.likes}}
+          </div>
           <div class='commentwrap'>
             <div class='comment-item'>
               <form ng-submit='postCmt()' id='submitCmt'>
@@ -72,6 +79,8 @@
   </div>
 
 </div>
+
+
 
 
 

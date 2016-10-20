@@ -4,7 +4,9 @@ angular.module('reactorlounge', [
   'reactorlounge.profilePage',
   'reactorlounge.generalPage',
   'reactorlounge.loginPage',
-  'reactorlounge.searchPage'
+  'reactorlounge.searchPage',
+  'reactorlounge.hackOverFlow',
+  'reactorlounge.overFlowService'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
@@ -22,7 +24,12 @@ angular.module('reactorlounge', [
     }).when("/search",{
       templateUrl: "../app/views/searchPage.html",
       controller: "SearchController"
+    })  
+    .when('/overFlow', {
+      templateUrl: '../app/views/HackOverFlow.html',
+      controller: 'HackOverFlowController'
     })
+
       .when('/resources', {
       templateUrl: '../app/views/comingSoonPage.html',
     })

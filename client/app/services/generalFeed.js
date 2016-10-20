@@ -11,6 +11,19 @@ angular.module('reactorlounge.services', [])
         return resp.data;
       })  
     },
+
+
+// To  Update Likes Post Request 
+
+  addlike: function (id,like) {
+     console.log("u r in the Addddddd Like ","id",id , "incremented like",like);
+      return $http({
+        method: 'POST',
+        url:    '/likes', 
+         data: {content:id,like}
+      
+      })
+    },
  //post request to add a message to /messages
     addMsg: function (Msg, Img) {
       return $http({
@@ -54,6 +67,8 @@ angular.module('reactorlounge.services', [])
     },
 
   }
+
+
 }]);
 
 
