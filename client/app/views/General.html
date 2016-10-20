@@ -33,14 +33,17 @@
       <p class='#304ffe indigo-text text-accent-4'>Christina</p>
       <p class='bdbdbd grey-text text-lighten-1'>{{message.created_at | date: 'medium'}}</p>
       <p>{{message.content}}</p>
-    </div>
-    <div class='msgpad'></div>
-           <!-- Like Function begin -->
-          <span ng-init="status=false"  ng-click="status =!status; addLike(status,message.id, message.likes)"> 
+
+      <span ng-init="status=false"  ng-click="status =!status; addLike(status,message.id, message.likes)"> 
            <span id= {{message.id}}><i class="fa fa-thumbs-up"></i> Like 
             </span> 
             </span>
              {{message.likes}}
+             
+    </div>
+    <div class='msgpad'></div>
+           <!-- Like Function begin -->
+          
 
          <!-- Like End  -->
   </div>

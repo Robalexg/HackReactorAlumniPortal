@@ -57,7 +57,50 @@ app.post('/likes',function(req,res){
 
 
 
+app.get('/questions',function(req,res){
+  knex.select('*').from('questions')
+  .then(function (table) {
+    res.status(200).json(table)
+  })
+  .catch(function(err){
+    console.log('this is a get/messages error', err)
+  })
+})
 
+
+app.post('/questions',function(req,res){
+  console.log("Helllo U r in Questions post", req.body)
+  knex('questions').insert({content: req.body.content})
+  .then(function () {
+    console.log('this was added')
+    res.status(201).end()
+  })
+})
+
+
+app.get('/Answers',function(req,res){
+ 
+ knex('Questions')
+.join('Answers', 'Questions.id', '=', 'Answers.qid')
+.select('Questions.id', 'Questions.Content','Answers.id','Answers.Answer','Answers.qid ')
+ .then(function (table) { 
+    res.status(200).json(table)
+  })
+  .catch(function(err){
+    console.log('this is a get/messages error', err)
+  })
+ })
+
+
+
+app.post('/Answers',function(req,res){
+   console.log('Answersssssss Knex', req.body)
+knex.insert({Answer:req.body.answer, qid:req.body.content}).into('Answers')
+.then(function () {
+     console.log('this was added')
+     res.status(201).end()
+   })
+})
 
 
 app.listen(3000)
