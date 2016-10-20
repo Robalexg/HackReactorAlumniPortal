@@ -12,7 +12,7 @@ angular.module('reactorlounge.services', [])
       })  
     },
  //post request to add a message to /messages
-    addMsg: function (Msg) {
+    addMsg: function (Msg, Img) {
       return $http({
         method: 'GET',
         url: '/sessions'
@@ -31,7 +31,7 @@ angular.module('reactorlounge.services', [])
         return $http({
           method: 'POST',
           url: '/messages',
-          data: {firstName: firstName, lastName: lastName, photolink: avatar, content: Msg}
+          data: {firstName: firstName, lastName: lastName, photolink: avatar, content: Msg, msgImageUrl: Img }
         })
       })
     },

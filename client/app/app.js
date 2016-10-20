@@ -24,10 +24,6 @@ angular.module('reactorlounge', [
       templateUrl: "../app/views/searchPage.html",
       controller: "SearchController"
     })
-      .when('/upload', {
-      templateUrl: '../app/views/uploadPage.html',
-      controller: 'UploadController'
-    })
       .when('/resources', {
       templateUrl: '../app/views/comingSoonPage.html',
     })

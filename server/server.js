@@ -40,7 +40,7 @@ app.get('/messages',function(req,res){
 
 app.post('/messages',function(req,res){
   console.log('############', req.body)
-  knex('messages').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink: req.body.photolink})
+  knex('messages').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink: req.body.photolink, msgImageUrl: req.body.msgImageUrl})
   .then(function () {
     console.log('this was added')
     res.status(201).end()

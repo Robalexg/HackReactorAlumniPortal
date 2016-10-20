@@ -2,6 +2,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'n
 
 .controller('GeneralFeedController', ['$scope', 'generalFeed', 'moment', 'Upload', '$timeout', function ($scope, generalFeed, moment, Upload, $timeout ) {
    $scope.data = {}
+   $scope.upload = true;
   // $scope.data.msgs = [{userId: 'Christina', created_at: 'October 15', content: 'This is great'}, {name: 'Robert', date: 'October 15', message: 'Im a genius'}, {name: 'Kendrick', date: 'October 15', message: 'I frequent Youtuber'}, {name: 'Tulasi', date: 'October 15', message: 'Im awesome'}];
   $scope.exampleDate = moment().hour(8).minute(0).second(0).toDate();
 
@@ -17,7 +18,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'n
 
 //post messages on submit, clear out msg submit field & make a call to initialmsg to fetch msgs
   $scope.postMsg = function(){
-    generalFeed.addMsg($scope.msg)
+    generalFeed.addMsg($scope.msg, $scope.imgUrl)
     .then(function(){
       $scope.msg=null;
       initialMsgs()
@@ -27,8 +28,9 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'n
     });
   }
 
+//your private s3 credientials, do not Git commit these 
   $scope.creds = {
-      bucket: '',
+      bucket: 'reactorlounge',
       access_key: '',
       secret_key: ''
     }
