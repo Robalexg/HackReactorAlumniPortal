@@ -1,4 +1,4 @@
-angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'ngImgCrop'])
+angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 
 .controller('GeneralFeedController', ['$scope', 'generalFeed', 'moment', 'Upload', '$timeout', function ($scope, generalFeed, moment, Upload, $timeout ) {
    $scope.data = {}
