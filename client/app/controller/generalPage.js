@@ -2,7 +2,6 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 
 .controller('GeneralFeedController', ['$scope', 'generalFeed', 'moment', 'Upload', '$timeout', function ($scope, generalFeed, moment, Upload, $timeout ) {
    $scope.data = {}
-   $scope.upload = true;
   // $scope.data.msgs = [{userId: 'Christina', created_at: 'October 15', content: 'This is great'}, {name: 'Robert', date: 'October 15', message: 'Im a genius'}, {name: 'Kendrick', date: 'October 15', message: 'I frequent Youtuber'}, {name: 'Tulasi', date: 'October 15', message: 'Im awesome'}];
   $scope.exampleDate = moment().hour(8).minute(0).second(0).toDate();
 
@@ -88,34 +87,37 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
   }
 
 
+  var initialCmts = function(){
+    generalFeed.getCmt()
+    .then(function(cmt){
+      $scope.data.cmts = cmt;
+      console.log("these are comments that should be fetched", $scope.data.cmts);
+    })
+    .catch(function(err){
+      console.log('this is a comment error', err);
+    });
+  }
 
-//gets messages when general is loaded
+  $scope.postCmt = function(id){
+    console.log('these are the comments that should be posted', $scope.data.cmt)
+    for(var key in $scope.data.cmt){
+      comment = $scope.data.cmt[key]
+    }
+    console.log('this is the comment variable', comment)
+    generalFeed.addCmt(comment, id)
+    .then(function(){
+      $scope.data.cmt=null;
+      initialCmts()
+    })
+    .catch(function(err){
+      console.log('this is a post comment error', err);
+    })
+  }
+
  initialMsgs();
+ initialCmts();
 
 }]);
 
   
 
-  // var initialCmts = function(){
-  //   generalFeed.getCmt()
-  //   .then(function(cmt){
-  //     $scope.data.cmts = cmt;
-  //     console.log("comments", $scope.data.cmts);
-  //   })
-  //   .catch(function(err){
-  //     console.log('this is a comment error', err);
-  //   });
-  // }
-
-  // $scope.postCmt = function(){
-  //   console.log('these are thecomments', $scope.cmt)
-  //   generalFeed.addCmt($scope.cmt)
-  //   .then(function(){
-  //     $scope.comment=null;
-  //     initialCmts()
-  //   })
-  //   .catch(function(err){
-  //     console.log('this is a post comment error', err);
-  //   })
-  // }
- // initialCmts();

@@ -13,6 +13,7 @@ exports.up = function(knex, Promise) {
   	}).then(function () {
   		console.log("Created User Table")
   	}),
+
   	knex.schema.createTable("messages",function (table) {
   		table.increments("id").primary()
   		table.string("content",200);
@@ -30,8 +31,10 @@ exports.up = function(knex, Promise) {
       table.increments("id").primary()
       table.string("content",200);
       table.integer("likes");
-      table.integer('userId',11).unsigned().references('id').inTable('user');
-      table.integer('msgId',11).unsigned().references('id').inTable('messages');
+      table.string("firstName",200);
+      table.string("lastName",200);
+      table.string("photolink",200);
+      table.integer('msgId',11);
       table.timestamp("created_at");
     }).then(function(){
       console.log("Created Comments Table")

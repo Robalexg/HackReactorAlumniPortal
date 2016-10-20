@@ -52,7 +52,6 @@ h1{
     min-height: 150px;
 }
 
-
 #uploader {
   max-width: 800px;
   min-height: 75px;
@@ -125,6 +124,18 @@ h1{
   overflow: hidden;
   padding: 8px;
   display: block;
+}
+
+.cmtimage {
+  overflow: hidden;
+  padding: 8px;
+  display: block;
+}
+
+.namecontent {
+  padding: 8px;
+  margin-left: .25%;
+  display: inline-block;
 }
 
 .namedate {

@@ -29,7 +29,7 @@
 
 
   <div class='msgtimeline' ng-if='data.msgs'>
-    <div ng-repeat='message in data.msgs'>
+    <div ng-repeat='message in data.msgs track by $index'>
       <div class='card'>
         <div class='topwrap'>
           <div class='image'>
@@ -40,43 +40,48 @@
             <p class='bdbdbd grey-text text-lighten-1' id='datetime'><span title="{{message.created_at | amDateFormat: 'MMMM Do YYYY, h:mm a' }}">{{message.created_at | amCalendar:referenceTime:formats}}</span></p>
           </div>
         </div>
-          <div class='postedmsgs'>
-            <p>{{message.content}}</p>
-          </div>
-          <div class='msgImg' ng-show='message.msgImageUrl'>
-            <img class='showImg' ng-src={{message.msgImageUrl}}>
-          </div>
-          <div class='msglikes'> 
-            <span ng-init="status=false"  ng-click="status =!status; addLike(status,message.id, message.likes)"> 
-              <span id= {{message.id}}><i class="fa fa-thumbs-up"></i> Like 
-              </span> 
-            </span>
-             {{message.likes}}
-          </div>
-          <div class='commentwrap'>
-            <div class='comment-item'>
-              <form ng-submit='postCmt()' id='submitCmt'>
-              <textarea placeholder="Write a comment" ng-model='cmt' id='textarea2'></textarea>
-              <div class='postpad' ng-if='cmt != null'>
-                  <input type='submit' id= 'buttonpost2' value='post'/></input>
-              </div>
-              </form>
+        <div class='postedmsgs'>
+          <p>{{message.content}}</p>
+        </div>
+        <div class='msgImg' ng-show='message.msgImageUrl'>
+          <img class='showImg' ng-src={{message.msgImageUrl}}>
+        </div>
+        <div class='msglikes'> 
+          <span ng-init="status=false"  ng-click="status =!status; addLike(status,message.id, message.likes)"> 
+            <span id= {{message.id}}><i class="fa fa-thumbs-up"></i> Like 
+            </span> 
+          </span>
+           {{message.likes}}
+        </div>
+      </div>
+      <div class='commentwrap' >
+        <div class='comment-item'>
+          <form ng-submit='postCmt(message.id)' id='submitCmt'>
+            <textarea placeholder="Write a comment" ng-model='data.cmt[$index]' id='textarea2'></textarea>
+            <div class='postpad' ng-if='data.cmt != null'>
+              <input type='submit' id= 'buttonpost2' value='post'/></input>
             </div>
-            <div ng-repeat='comment in data.cmts'>
+          </form>
+        </div>
+        <div class="cmttimeline">
+          <div ng-repeat='comment in data.cmts'>
+          <span ng-if="message.id === comment.msgId ">
+            <div class='cmtcard'>
               <div class='topcmtwrap'>
-                <div class='cmt-image'>
-                  <img class='resize' src='https://ipetcompanion.com/feedapuppy/styles/media/puppy.jpg'>   
-                </div>
-                <div class='datename'>
-                <p class='name'>{{comment.content}}</p>
-                <p class='bdbdbd grey-text text-lighten-1' id='datetime'>{{comment.created_at}}</p>
+                <div class='cmtimage'>
+                  <img class='resize' ng-src={{comment.photolink}}> 
+                  <div class ="namecontent">{{comment.firstName}} {{comment.lastName}} {{comment.content}}
+                  </div>
                 </div>
               </div>
+            </div>
+          </span>
           </div>
-       </div>
+        </div>
       </div>
     </div>
   </div>
+
 
 </div>
 

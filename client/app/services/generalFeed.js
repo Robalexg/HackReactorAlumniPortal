@@ -58,11 +58,30 @@ angular.module('reactorlounge.services', [])
       })
     },
   //post request to add a comment to /comments
-    addCmt: function(Cmt) {
+    addCmt: function (Cmt, id) {
+      return $http({
+        method: 'GET',
+        url: '/sessions'
+      }).then(function(resp){
+        var usersId = resp.data[0].userId
+        return $http({
+          method: 'POST',
+          url: '/user',
+          data: {userId: usersId}
+        })
+      }).then(function(resp){
+        for(var key in Cmt){
+          comment = Cmt;
+        }
+        console.log('this is resp data', resp.data[0])
+        var first = resp.data[0].firstName
+        var last = resp.data[0].lastName
+        var avi = resp.data[0].photolink
         return $http({
           method: 'POST',
           url: '/comments',
-          data: {content: Cmt}
+          data: {firstName: first, lastName: last, photolink: avi, content: comment, msgId: id}
+        })
       })
     },
 
