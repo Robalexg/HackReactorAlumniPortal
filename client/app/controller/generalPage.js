@@ -1,4 +1,4 @@
-angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
+angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'ui.bootstrap'])
 
 .controller('GeneralFeedController', ['$scope', 'generalFeed', 'moment', 'Upload', '$timeout', function ($scope, generalFeed, moment, Upload, $timeout ) {
    $scope.data = {}
@@ -27,13 +27,14 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
     });
   }
 
-//your private s3 credientials, do not Git commit these 
+//user s3 credentials
   $scope.creds = {
       bucket: 'reactorlounge',
-      access_key: '',
-      secret_key: ''
+      access_key: 'AKIAJNO7VBBIJVDRHMMQ',
+      secret_key: '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'
     }
 
+//function uses aws sdk module to upload image to amazon s3
     $scope.upload = function() {
       AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
       AWS.config.region = 'us-east-1';
@@ -139,6 +140,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
     })
   }
 
+//gets messags and comments on load
  initialMsgs();
  initialCmts();
 
