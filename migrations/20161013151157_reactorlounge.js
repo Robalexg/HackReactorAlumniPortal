@@ -18,18 +18,44 @@ exports.up = function(knex, Promise) {
   		table.increments("id").primary()
   		table.string("content",200);
       table.integer("likes");
-			table.integer('userId',11).unsigned().references('id').inTable('user')
+			table.string("firstName",200);
+      table.string("lastName",200);
+      table.string("photolink",200);
+      table.string("msgImageUrl", 200);
 			table.timestamp("created_at");
   	}).then(function(){
   		console.log("Created Message Table")
-  	})
+  	}),
+
+    knex.schema.createTable("comments",function (table) {
+      table.increments("id").primary()
+      table.string("content",200);
+      table.integer("likes");
+      table.string("firstName",200);
+      table.string("lastName",200);
+      table.string("photolink",200);
+      table.integer('msgId',11);
+      table.timestamp("created_at");
+    }).then(function(){
+      console.log("Created Comments Table")
+  	}),
+
+    knex.schema.createTable("sessions",function (table) {
+      table.increments("id").primary()
+      table.string("sessionId");
+      table.integer('userId',11).unsigned().references('id').inTable('user');
+    }).then(function () {
+      console.log("Created Sessions Table");
+    })
   ])
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
   	knex.schema.dropTable("user"),
-  	knex.schema.dropTable("messages")
+    knex.schema.dropTable("comments"),
+  	knex.schema.dropTable("messages"),
+    knex.schema.dropTable("sessions")
   ])
 
 };
