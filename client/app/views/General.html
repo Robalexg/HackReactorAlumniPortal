@@ -5,20 +5,19 @@
     <form ng-submit='postMsg()' id='submit'>
       <textarea placeholder="What's on your mind?" ng-model='msg' id='textarea'></textarea>
       <div class='postpad' ng-if='msg != null'>
-        <div class='upload'>
-          <a href="" ng-click='upload = !upload' ><i class='fa fa-camera fa-2x' id='camera'></i></a>
+       <div class='upload'>
+      <!-- <button ngf-select ng-model="picFile" accept="image/*">
+          Select Picture</button> -->
+          <!-- <a href="" ng-click='test()'><i class='fa fa-camera fa-2x' id='camera'></i></a> -->
         </div>
-        <input type='submit' id= 'buttonpost' value='post'/></input>
       </div>
+        <input type='submit' id= 'buttonpost' value='post'/></input>
     </form>
     <div id='uploader' ng-show='upload'>
-      <button ngf-select ng-model="picFile" accept="image/*">
-          Select Picture</button>
       <div>
           <img class='prevpic' ngf-thumbnail="picFile">
       </div>
-      <button ng-click="upload(picFile, picFile.name)">Upload</button> 
-          
+      <a ngf-select ng-model="picFile"><i class='fa fa-camera fa-2x' id='camera'></i></a>
       <span class="progress" ng-show="progress >= 0">
         <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
       </span>

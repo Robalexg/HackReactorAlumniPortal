@@ -52,10 +52,6 @@ h1{
     min-height: 150px;
 }
 
-#uploader {
-  max-width: 800px;
-  min-height: 75px;
-}
 
 .comment-item {
     background: #f7f7f7;
@@ -231,9 +227,9 @@ h1{
  padding: 35px
 }
 
-
-
-
+.upload{
+  height:450px;
+}
 
 #HackOverFlow{
   width: 75%;

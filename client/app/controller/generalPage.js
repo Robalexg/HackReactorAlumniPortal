@@ -1,4 +1,4 @@
-angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'ui.bootstrap'])
+angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 
 .controller('GeneralFeedController', ['$scope', 'generalFeed', 'moment', 'Upload', '$timeout', function ($scope, generalFeed, moment, Upload, $timeout ) {
    $scope.data = {}
@@ -17,6 +17,20 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'u
 
 //post messages on submit, clear out msg submit field & make a call to initialmsg to fetch msgs
   $scope.postMsg = function(){
+    console.log('this is the photo')
+    if($scope.picFile){
+      $scope.upload($scope.picFile, $scope.picFile.name, function(){
+         generalFeed.addMsg($scope.msg, $scope.imgUrl)
+        .then(function(){
+          $scope.msg=null;
+
+          initialMsgs()
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+      })
+    }
     generalFeed.addMsg($scope.msg, $scope.imgUrl)
     .then(function(){
       $scope.msg=null;
@@ -30,12 +44,12 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'u
 //user s3 credentials
   $scope.creds = {
       bucket: 'reactorlounge',
-      access_key: 'AKIAJNO7VBBIJVDRHMMQ',
-      secret_key: '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'
+      access_key: '',
+      secret_key: ''
     }
 
 //function uses aws sdk module to upload image to amazon s3
-    $scope.upload = function() {
+    $scope.upload = function(pic, name, callback) {
       AWS.config.update({ accessKeyId: $scope.creds.access_key, secretAccessKey: $scope.creds.secret_key });
       AWS.config.region = 'us-east-1';
       var bucket = new AWS.S3({ params: { Bucket: $scope.creds.bucket } });
@@ -48,6 +62,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload', 'u
           }
           else if(data){
             $scope.imgUrl = 'https://reactorlounge.s3.amazonaws.com/' + $scope.picFile.name
+            callback($scope.imgUrl)
             console.log('Upload Done', $scope.imgUrl);
           }
         })
