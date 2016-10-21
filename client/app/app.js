@@ -25,7 +25,7 @@ angular.module('reactorlounge', [
       templateUrl: "../app/views/searchPage.html",
       controller: "SearchController"
     })  
-    .when('/overFlow', {
+    .when('/overflow', {
       templateUrl: '../app/views/HackOverFlow.html',
       controller: 'HackOverFlowController'
     })

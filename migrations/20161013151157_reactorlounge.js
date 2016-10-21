@@ -46,7 +46,23 @@ exports.up = function(knex, Promise) {
       table.integer('userId',11).unsigned().references('id').inTable('user');
     }).then(function () {
       console.log("Created Sessions Table");
+    }),
+
+    knex.schema.createTable("questions",function(table){
+    	table.increments("id").primary()
+    	table.string("Content");
+    }).then(function () {
+    	console.log("Created questions table");
+    }),
+
+    knex.schema.createTable("answers",function(table){
+    	table.increments("id").primary()
+    	table.string("Answer");
+    	table.integer("qid")
+    }).then(function () {
+    	console.log("Created answer table");
     })
+
   ])
 };
 
