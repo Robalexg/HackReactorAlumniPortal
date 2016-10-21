@@ -10,38 +10,38 @@
 </div>
 
 <div>
-<div id='messages' ng-repeat='message in data.msgs'>
-  <div class="card horizontal"> 
 
-  
+<ul class="collapsible" data-collapsible="accordion">
+   <li id="licollapse" ng-repeat="message in data.msgs">
+       <div class="collapsible-header"><i class="fa fa-expand" aria-hidden="true"></i>{{message.content}}</div>
+       <div class="collapsible-body">
+           <div ng-repeat='answers in data.answers'>
+           <span ng-if="message.ID === answers.qid "> 
+           <span class="card horizontal"> 
+           {{answers.Answer}}
+           </span>
+           </div> 
+           <div>
+           <textarea ng-model="txtcomment" placeholder="Please Add Your ANswer" style='width:200px'></textarea>
+   <button ng-click=postAnswer(message.ID,txtcomment);> Answer</button></div>
+        
+       </div>
 
-  <p>Question:{{message.content}}</p>  
-  <div id='answers'  ng-repeat='answers in data.answers'>  
-   
-   <span ng-if="message.ID === answers.qid "> 
+    </li>
+   <script>
+//Instert this just after closing </li>             
+    $(document).ready(function() {
+    $('.collapsible').collapsible({
+       accordion: true 
+      });
+     });
+    </script>
+</ul>
 
-     <span class="card horizontal"> 
 
-      {{answers.Answer}}
-    </span>
 
-     </span>
-     </div>
 
-  <p> <textarea ng-model="txtcomment" placeholder="Please Add Your ANswer" style='width:200px'></textarea>
-   <button ng-click=postAnswer(message.ID,txtcomment);> Answer</button><p>
-      
-             
-    </div>
-    <div class='msgpad'></div>
-         
-  </div>
 </div>
-</div>
-
-
-</div>
-
 
 
 

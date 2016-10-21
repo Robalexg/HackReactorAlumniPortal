@@ -84,3 +84,24 @@ h1{
     max-width: 600px;
     min-height: 20px;
 }
+
+.QuestionDiv {
+line-height: 20px;
+  margin: 30px;
+  padding-bottom: 20px;
+  text-align: justify;
+  width: 500px;
+  color: red;
+  /*background: #f7f7f7;*/
+   background-color: #F0F8FF;
+}
+
+
+
+.single-collapsible{
+ .collapsible{
+    box-shadow: none;
+    margin-bottom: -1rem;}
+
+ .collapsible-header{padding: 0;}
+} 
