@@ -1,4 +1,4 @@
-angular.module('reactorlounge.services', [])
+angular.module('reactorlounge.overFlowService', [])
 
 .factory('overFlow', ['$http', function ($http) {
   return {

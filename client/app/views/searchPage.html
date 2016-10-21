@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+	<input type = "text" placeholder="Search for user" ng-model="search"/>
+	
+	<div ng-show="search"class='searchWrapper'ng-repeat = 'u in users | filter: search' >
+		<div id = "searchName">{{u.firstName}} {{u.lastName}}</div>
+		<img  id="searchPhoto" src={{u.photolink}}>
+	</div>
+
+
+
+
+</body>
+</html>

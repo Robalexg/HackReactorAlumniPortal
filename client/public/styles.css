@@ -30,7 +30,18 @@ h1{
 		width: 300px;
 }
 
-.timeline-item {
+.posttimeline {
+    background: #f7f7f7;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+    padding: 12px;
+    margin: 0 auto;
+    max-width: 800px;
+    min-height: 75px;
+}
+
+.msgtimeline {
     background: #f7f7f7;
     border: 1px solid;
     border-color: #e5e6e9 #dfe0e4 #d0d1d5;
@@ -41,31 +52,187 @@ h1{
     min-height: 150px;
 }
 
+#uploader {
+  max-width: 800px;
+  min-height: 75px;
+}
 
+.comment-item {
+    background: #f7f7f7;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    border-radius: 3px;
+    padding: 12px;
+    margin: 0 auto;
+    max-width: 800px;
+    min-height: 25%;
+}
 
 #buttonpost {
     width: 85px;
-    height: 30px;
+    height: 40px;
     border-radius: 4px/4px;
-    background: #142170;
+    background: #3b5998;
     font-size: 15px;
     outline: none;
     color: white;
     position: relative;
-    margin-left: 555px;
+    margin-left: 85%;
+    padding: 8px;
+    display: block;
+}
+
+#buttonpost2 {
+    width: 15%;
+    height: 1%;
+    border-radius: 4px/4px;
+    background: #3b5998;
+    font-size: 15px;
+    outline: none;
+    color: white;
+    position: relative;
+    margin-left: 85%;
+    padding: 8px;
+}
+
+.upload{
+  position: absolute;
+  float: left;
+  overflow: hidden;
+  padding: 8px;
+  display: block;
+  height: 40px;
+  color: #3b5998;
 }
 
 #textarea{
   width: 99%;
-  height: 150px;
+  height: 30%;
   margin: auto;
   background: white;
 }
 
-#gencontainer{
-	width: 50%;
-	margin: auto;
+#textarea2{
+  width: 100%;
+  height: 5%;
+  margin: auto;
+  background: white;
 }
+
+.image {
+  float: left;
+  overflow: hidden;
+  padding: 8px;
+  display: block;
+}
+
+.cmtimage {
+  overflow: hidden;
+  padding: 8px;
+  display: block;
+}
+
+.cmtcont {
+  margin: 0;
+  padding: 0;
+}
+
+.cmtname{
+  margin: 0;
+  padding: 0;
+  color: #3b5998;
+  font-weight: bold;
+}
+
+.namecontent {
+  padding: 8px;
+  margin-left: .25%;
+  display: inline-block;
+}
+
+.namedate {
+  overflow: hidden;
+  width: 35%;
+  left: 10px;
+}
+
+#datetime {
+  line-height: 0px;
+  font-size: 12px;
+}
+.resize {
+  width: 50px;
+  height: 50px;
+}
+
+.postedmsgs{
+  padding: 8px;
+}
+
+.msglikes {
+  padding: 8px;
+}
+
+.name {
+  color: #3b5998;
+  font-weight: bold;
+}
+
+#camera {
+  color:#3b5998;
+}
+
+.prevpic {
+  height: 350px;
+  width: 500px;
+}
+
+.showImg {
+  height: 350px;
+  width: 500px;
+  padding: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.msgImg {
+   height: 350px;
+  width: 500px;
+  padding: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#searchPhoto{
+  height: 50px;
+  width: 50px;
+}
+
+.searchWrapper{
+  float: left;
+  width: 18%;
+
+}
+
+#searchName{
+  float: right;
+  margin-top: -3%;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.ng-show { 
+  animation:0.5s flipInX ease; 
+}
+
+#uploader {
+ padding: 35px
+}
+
+
+
 
 
 #HackOverFlow{
