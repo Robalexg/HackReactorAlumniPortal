@@ -82,7 +82,7 @@ app.get('/Answers',function(req,res){
  
  knex('Questions')
 .join('Answers', 'Questions.id', '=', 'Answers.qid')
-.select('Questions.id', 'Questions.Content','Answers.id','Answers.Answer','Answers.qid ')
+.select('Questions.id', 'Questions.Content','Answers.id','Answers.Answer','Answers.qid','Answers.likes')
  .then(function (table) { 
     res.status(200).json(table)
   })
@@ -101,6 +101,19 @@ knex.insert({Answer:req.body.answer, qid:req.body.content}).into('Answers')
      res.status(201).end()
    })
 })
+
+
+app.post('/Answerlikes',function(req,res){
+  console.log('############ in Answer likessss', req.body);
+  knex('Answers')
+    .where({ id: req.body.content})
+    .update({ likes: req.body.like})
+    .then(function(data){
+      console.log("added likes",data)
+    }).catch(function(err){
+      console.log("errr", err);
+    })
+   })
 
 
 app.listen(3000)

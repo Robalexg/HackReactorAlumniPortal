@@ -18,8 +18,15 @@
            <div ng-repeat='answers in data.answers'>
            <span ng-if="message.ID === answers.qid "> 
            <span class="card horizontal"> 
-           {{answers.Answer}}
+           {{answers.Answer}}    
+        
+            <span ng-init="status=false"  ng-click="status =!status; addLike(status,answers.id, answers.likes)"> 
+           <span id= {{answers.id}}><i class="fa fa-thumbs-up"></i> Like 
+            </span> 
+            {{answers.likes}}
+            </span>
            </span>
+
            </div> 
            <div>
            <textarea ng-model="txtcomment" placeholder="Please Add Your ANswer" style='width:200px'></textarea>

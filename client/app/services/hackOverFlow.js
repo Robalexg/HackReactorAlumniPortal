@@ -23,7 +23,17 @@ angular.module('reactorlounge.services', [])
       
       })
     },
+  
 
+  addlike: function (id,like) {
+     console.log("u r in the Addddddd Like ","id",id , "incremented like",like);
+      return $http({
+        method: 'POST',
+        url:    '/Answerlikes', 
+         data: {content:id,like}
+      
+      })
+    },
 
 
     getAnswer: function () {
