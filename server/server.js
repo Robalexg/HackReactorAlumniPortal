@@ -57,6 +57,7 @@ app.get('/comments',function(req,res){
 })
 
 app.post('/comments',function(req,res){
+  console.log('this is a comment', req.body)
   knex('comments').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink:req.body.photolink, msgId: req.body.msgId})
   .then(function () {
     console.log('this comment was added')

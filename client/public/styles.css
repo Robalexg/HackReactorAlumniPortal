@@ -169,6 +169,10 @@ h1{
   padding: 8px;
 }
 
+.cmtlikes {
+  padding: 8px;
+}
+
 .name {
   color: #3b5998;
   font-weight: bold;
@@ -176,6 +180,11 @@ h1{
 
 #camera {
   color:#3b5998;
+}
+
+#campost {
+  position: absolute;
+  top: 75px;
 }
 
 .prevpic {
@@ -225,10 +234,6 @@ h1{
 
 #uploader {
  padding: 35px
-}
-
-.upload{
-  height:450px;
 }
 
 #HackOverFlow{

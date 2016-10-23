@@ -44,8 +44,8 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 //user s3 credentials
   $scope.creds = {
       bucket: 'reactorlounge',
-      access_key: '',
-      secret_key: ''
+      access_key: 'AKIAJNO7VBBIJVDRHMMQ',
+      secret_key: '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'
     }
 
 //function uses aws sdk module to upload image to amazon s3
@@ -105,8 +105,9 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
   $scope.addCmtLike = function(status, id, likes){ 
     if (status){
       likes++; 
-      $scope.data.msgs.forEach(function(comment){
+      $scope.data.cmts.forEach(function(comment){
         if (comment.id === id){
+          console.log('these are equal!!!')
         comment.likes++;
         angular.element('#'+ comment.id).addClass('blue-text'); 
         }
@@ -115,6 +116,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
       likes--; 
       $scope.data.cmts.forEach(function(comment){
         if (comment.id === id){
+          console.log('these are equal also')
         comment.likes--;
         angular.element('#'+ comment.id).removeClass('blue-text');
         }
@@ -139,13 +141,14 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
   }
 
   $scope.postCmt = function(id){
+    console.log('this is the comment message id', id)
     for(var key in $scope.data.cmt){
       comment = $scope.data.cmt[key]
     }
     generalFeed.addCmt(comment, id)
     .then(function(){
       initialCmts()
-      scope.data.cmt=null;
+      // $scope.data.cmt=null;
     })
     .catch(function(err){
       console.log('this is a post comment error', err);
