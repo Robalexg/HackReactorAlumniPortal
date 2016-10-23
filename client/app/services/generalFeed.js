@@ -16,7 +16,7 @@ angular.module('reactorlounge.services', [])
 // To  Update Likes Post Request 
 
   addlike: function (id,like) {
-     console.log("u r in the Addddddd Like ","id",id , "incremented like",like);
+     //console.log("u r in the Addddddd Like ","id",id , "incremented like",like);
       return $http({
         method: 'POST',
         url:    '/likes', 
@@ -26,7 +26,7 @@ angular.module('reactorlounge.services', [])
     },
 
   cmtlike: function (id,like) {
-   console.log("u r in the cmt Like ","id",id , "incremented like",like);
+   //console.log("u r in the cmt Like ","id",id , "incremented like",like);
     return $http({
       method: 'POST',
       url:    '/cmtlikes', 

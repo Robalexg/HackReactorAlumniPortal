@@ -64,7 +64,8 @@ $scope.addLike = function(status, id, likes){
   console.log("Add Like Button Values", "status",status, "ID", id, "Likes", likes);
      if (status){
           likes++; 
-         $scope.data.answers.forEach(function(answers){
+         $scope.data.answers.forEach(function(answers){ 
+          console.log("anserrs add like", answers);
      if (answers.id === id){
           answers.likes++;
           angular.element('#'+ answers.id).addClass('blue-text'); 

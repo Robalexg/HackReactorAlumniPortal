@@ -47,6 +47,14 @@
                   </div> 
               </div>
           </div>
+
+          <div class='cmtlikes'> 
+              <span ng-init="status=false"  ng-click="status =!status; addLike(status, answers.id, answers.likes)">
+            <span id= {{answers.id}}><i class="fa fa-thumbs-up"></i> Like </span> 
+                </span>
+                {{answers.likes}}
+              </div>
+
           </span> 
       </div>
            

@@ -232,9 +232,6 @@ h1{
 }
 
 
-
-
-
 #HackOverFlow{
   width: 75%;
   margin: auto;
@@ -252,7 +249,7 @@ h1{
     min-height: 20px;
 }
 
-.QuestionDiv {
+/*.QuestionDiv {
 line-height: 20px;
   margin: 30px;
   padding-bottom: 20px;
@@ -260,15 +257,22 @@ line-height: 20px;
   width: 500px;
   color: red;
   /*background: #f7f7f7;*/
-   background-color: #F0F8FF;
-}
+ /*  background-color: #F0F8FF;
+}*/*/
 
 
 
 .single-collapsible{
  .collapsible{
     box-shadow: none;
-    margin-bottom: -1rem;}
+    margin-bottom: -1rem;
+  }
 
  .collapsible-header{padding: 0;}
 } 
+
+.collapsible-body{
+  background-color: #F5F5F5;
+
+
+}
