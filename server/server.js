@@ -39,9 +39,10 @@ app.get('/messages',function(req,res){
 })
 
 
+
 app.post('/messages',function(req,res){
   knex('messages').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink: req.body.photolink, msgImageUrl: req.body.msgImageUrl})
-  .then(function () {
+   .then(function () {
     res.status(201).end()
   })
 })

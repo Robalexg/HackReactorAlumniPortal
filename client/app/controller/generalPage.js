@@ -4,6 +4,12 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
    $scope.data = {}
   // $scope.data.msgs = [{userId: 'Christina', created_at: 'October 15', content: 'This is great'}, {name: 'Robert', date: 'October 15', message: 'Im a genius'}, {name: 'Kendrick', date: 'October 15', message: 'I frequent Youtuber'}, {name: 'Tulasi', date: 'October 15', message: 'Im awesome'}];
   $scope.exampleDate = moment().hour(8).minute(0).second(0).toDate();
+//user s3 credentials
+  $scope.creds = {
+      bucket: 'reactorlounge',
+      access_key: '', 
+      secret_key: ''
+    }
 
     var initialMsgs = function(){
     generalFeed.getMsg()
@@ -23,18 +29,17 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
         .then(function(){
           initialMsgs();
           $scope.msg=null;
-          $scope.imgUrl=null;
+          $scope.picFile=null;
         })
         .catch(function (error) {
           console.error(error);
         });
       })
     } else {
-    generalFeed.addMsg($scope.msg, $scope.imgUrl)
+    generalFeed.addMsg($scope.msg)
     .then(function(){
       initialMsgs();
       $scope.msg=null;
-      $scope.imgUrl =null;
     })
     .catch(function (error) {
       console.error(error);
@@ -42,12 +47,6 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
     }
   }
 
-//user s3 credentials
-  $scope.creds = {
-      bucket: 'reactorlounge',
-      access_key: '',
-      secret_key: ''
-    }
 
 //function uses aws sdk module to upload image to amazon s3
     $scope.upload = function(pic, name, callback) {
