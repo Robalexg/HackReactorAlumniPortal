@@ -161,6 +161,16 @@ app.post('/Answers',function(req,res){
   })
 })
 
+app.post('/signout',function(req,res){
+	if(req.cookies.sessionId){
+		knex("sessions").where({sessionId:req.cookies.sessionId}).del().then(function () {
+			res.clearCookie("sessionId")
+			console.log("deleted")
+			res.status(200).end()
+		})
+	}
+})
+
 
 app.listen(3000)
 console.log("Listening on port 3000")

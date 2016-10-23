@@ -94,6 +94,13 @@ angular.module('reactorlounge.services', [])
       })
     },
 
+   signOut: function(){
+   	return $http({
+   		method: "POST",
+   		url: '/signout'
+   	})
+   }
+
   }
 
 
