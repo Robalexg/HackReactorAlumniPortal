@@ -24,9 +24,11 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 //post messages on submit, clear out msg submit field & make a call to initialmsg to fetch msgs
   $scope.postMsg = function(){
     if($scope.picFile){
+      $scope.loading = true;
       $scope.upload($scope.picFile, $scope.picFile.name, function(){
          generalFeed.addMsg($scope.msg, $scope.imgUrl)
         .then(function(){
+          $scope.loading = false;
           initialMsgs();
           $scope.msg=null;
           $scope.picFile=null;
@@ -61,6 +63,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
             return false;
           }
           else if(data){
+            $scope.loading = true;
             $scope.imgUrl = 'https://reactorlounge.s3.amazonaws.com/' + $scope.picFile.name
             callback($scope.imgUrl)
             console.log('Upload Done', $scope.imgUrl);
@@ -68,7 +71,6 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
         })
         .on('httpUploadProgress',function(progress) {
               console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
-              $scope.showProgress = Math.round(progress.loaded / progress.total * 100) + '% done';
             });
       }
       else {
@@ -108,7 +110,6 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
       likes++; 
       $scope.data.cmts.forEach(function(comment){
         if (comment.id === id){
-          console.log('these are equal!!!')
         comment.likes++;
         angular.element('#'+ comment.id).addClass('blue-text'); 
         }
@@ -117,7 +118,6 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
       likes--; 
       $scope.data.cmts.forEach(function(comment){
         if (comment.id === id){
-          console.log('these are equal also')
         comment.likes--;
         angular.element('#'+ comment.id).removeClass('blue-text');
         }
