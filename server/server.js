@@ -116,6 +116,15 @@ app.get('/users',function(req,res){
   })
 })
 
+app.get('/user',function(req,res){
+	knex("sessions").where({sessionId:req.cookies.sessionId}).then(function(user){
+		knex("user").where({userId:user.id}).select().then(function(usr){
+			res.status(200).json(usr)
+		})
+
+	})
+})
+
 app.get('/sessions',function(req,res){
   knex("sessions")
   .select('userId')
