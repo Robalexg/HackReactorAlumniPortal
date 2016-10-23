@@ -76,7 +76,8 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
       }
     }
 
-  $scope.addLike = function(status, id, likes){ 
+  $scope.addLike = function(status, id, likes){  
+
     if (status){
       likes++; 
       $scope.data.msgs.forEach(function(message){
@@ -103,17 +104,19 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
     });
   }
 
-  $scope.addCmtLike = function(status, id, likes){ 
+  $scope.addCmtLike = function(status, id, likes){
+     console.log("in the comment add like", status, id, likes); 
     if (status){
       likes++; 
       $scope.data.cmts.forEach(function(comment){
         if (comment.id === id){
           console.log('these are equal!!!')
         comment.likes++;
+
         angular.element('#'+ comment.id).addClass('blue-text'); 
         }
       })     
-    } else {
+      } else {
       likes--; 
       $scope.data.cmts.forEach(function(comment){
         if (comment.id === id){

@@ -1,4 +1,4 @@
-var express = require("express")
+  var express = require("express")
 var path = require("path")
 var app = express()
 var configKnex = require("../knexfile.js")
@@ -101,12 +101,17 @@ app.get('/questions',function(req,res){
 
 app.post('/questions',function(req,res){
   console.log("Helllo U r in Questions post", req.body)
-  knex('questions').insert({content: req.body.content})
+  knex('questions').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink: req.body.photolink, msgImageUrl: req.body.msgImageUrl})
   .then(function () {
     console.log('this was added')
     res.status(201).end()
   })
 })
+
+
+
+
+
 
 app.get('/users',function(req,res){
   knex("user").select().then(function (users) {
@@ -146,7 +151,7 @@ app.post('/user',function(req,res){
 app.get('/Answers',function(req,res){
  knex('Questions')
 .join('Answers', 'Questions.id', '=', 'Answers.qid')
-.select('Questions.id', 'Questions.Content','Answers.id','Answers.Answer','Answers.qid ')
+.select('Questions.id','Answers.id','Answers.Answer','Answers.qid','Answers.likes','Answers.firstName','Answers.lastName','Answers.photolink')
  .then(function (table) { 
     res.status(200).json(table)
   })
@@ -157,7 +162,8 @@ app.get('/Answers',function(req,res){
 
 app.post('/Answers',function(req,res){
    console.log('Answersssssss Knex', req.body)
-  knex.insert({Answer:req.body.answer, qid:req.body.content}).into('Answers')
+  knex.insert({firstName: req.body.firstName, lastName: req.body.lastName, 
+  photolink:req.body.photolink, qid: req.body.qid, Answer:req.body.Answer}).into('Answers')
   .then(function () {
     console.log('this was added')
     res.status(201).end()
@@ -173,6 +179,20 @@ app.post('/signout',function(req,res){
 		})
 	}
 })
+
+
+
+app.post('/Answerlikes',function(req,res){
+  console.log('############ in Answer likessss', req.body);
+  knex('Answers')
+    .where({ id: req.body.content})
+    .update({ likes: req.body.like})
+    .then(function(data){
+      console.log("added likes",data)
+    }).catch(function(err){
+      console.log("errr", err);
+    })
+   })
 
 
 app.listen(3000)

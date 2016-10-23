@@ -52,6 +52,48 @@ angular.module('reactorlounge.hackOverFlow', [])
       });
   }
 
+ $scope.creds = {
+     bucket: 'reactorlounge',
+     access_key: 'AKIAJNO7VBBIJVDRHMMQ',
+     secret_key: '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'
+   }
+
+
+$scope.addLike = function(status, id, likes){  
+
+  console.log("Add Like Button Values", "status",status, "ID", id, "Likes", likes);
+     if (status){
+          likes++; 
+         $scope.data.answers.forEach(function(answers){ 
+          console.log("anserrs add like", answers);
+     if (answers.id === id){
+          answers.likes++;
+          angular.element('#'+ answers.id).addClass('blue-text'); 
+          }
+          })     
+         }
+
+   else {
+       likes--; 
+      $scope.data.answers.forEach(function(answers){
+    if (answers.id === id){
+        answers.likes--;
+       angular.element('#'+ answers.id).removeClass('blue-text');
+        }
+        })  
+     }
+     overFlow.addlike(id, likes)
+         .then(function(){
+          console.log("successs in add like");
+            })
+          .catch(function (error) {
+         console.error(error);
+         });
+        }
+
+
+
+
 
 getQuestions(); 
 
