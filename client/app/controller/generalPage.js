@@ -17,35 +17,36 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 
 //post messages on submit, clear out msg submit field & make a call to initialmsg to fetch msgs
   $scope.postMsg = function(){
-    console.log('this is the photo')
     if($scope.picFile){
       $scope.upload($scope.picFile, $scope.picFile.name, function(){
          generalFeed.addMsg($scope.msg, $scope.imgUrl)
         .then(function(){
+          initialMsgs();
           $scope.msg=null;
-
-          initialMsgs()
+          $scope.imgUrl =null;
         })
         .catch(function (error) {
           console.error(error);
         });
       })
-    }
+    } else {
     generalFeed.addMsg($scope.msg, $scope.imgUrl)
     .then(function(){
+      initialMsgs();
       $scope.msg=null;
-      initialMsgs()
+      $scope.imgUrl =null;
     })
     .catch(function (error) {
       console.error(error);
     });
+    }
   }
 
 //user s3 credentials
   $scope.creds = {
       bucket: 'reactorlounge',
-      access_key: 'AKIAJNO7VBBIJVDRHMMQ',
-      secret_key: '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'
+      access_key: '',
+      secret_key: ''
     }
 
 //function uses aws sdk module to upload image to amazon s3
@@ -141,14 +142,13 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
   }
 
   $scope.postCmt = function(id){
-    console.log('this is the comment message id', id)
     for(var key in $scope.data.cmt){
       comment = $scope.data.cmt[key]
     }
     generalFeed.addCmt(comment, id)
     .then(function(){
       initialCmts()
-      // $scope.data.cmt=null;
+      $scope.data.cmt=null;
     })
     .catch(function(err){
       console.log('this is a post comment error', err);

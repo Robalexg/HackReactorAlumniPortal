@@ -57,7 +57,6 @@ app.get('/comments',function(req,res){
 })
 
 app.post('/comments',function(req,res){
-  console.log('this is a comment', req.body)
   knex('comments').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink:req.body.photolink, msgId: req.body.msgId})
   .then(function () {
     console.log('this comment was added')
@@ -78,7 +77,6 @@ app.post('/likes',function(req,res){
 })
 
 app.post('/cmtlikes',function(req,res){
-  console.log('############ in cmtlikessss', req.body)
   knex('comments')
   .where({ id: req.body.commentId})
   .update({ likes: req.body.like})
@@ -118,7 +116,6 @@ app.get('/users',function(req,res){
 })
 
 app.get('/sessions',function(req,res){
-  console.log('Cookies: ', req.cookies.sessionId)
   knex("sessions")
   .select('userId')
   .where('sessionId', req.cookies.sessionId)
@@ -128,7 +125,6 @@ app.get('/sessions',function(req,res){
 })
 
 app.post('/user',function(req,res){
-  console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body.userId)
   knex("user")
   .select('*')
   .where('id', req.body.userId)

@@ -60,7 +60,7 @@
         </div>
         <div class="cmttimeline">
           <div id="cmtcard">
-          <div ng-repeat='comment in data.cmts'>
+          <div ng-repeat='comment in data.cmts |limitTo'>
           <span ng-if="message.id === comment.msgId ">
             
               <div class='topcmtwrap'>
