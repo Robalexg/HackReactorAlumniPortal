@@ -132,7 +132,6 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
     generalFeed.getCmt()
     .then(function(cmt){
       $scope.data.cmts = cmt;
-      console.log("these are comments that should be fetched", $scope.data.cmts);
     })
     .catch(function(err){
       console.log('this is a comment error', err);
@@ -140,15 +139,13 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
   }
 
   $scope.postCmt = function(id){
-    console.log('these are the comments that should be posted', $scope.data.cmt)
     for(var key in $scope.data.cmt){
       comment = $scope.data.cmt[key]
     }
-    console.log('this is the comment variable', comment)
     generalFeed.addCmt(comment, id)
     .then(function(){
-      $scope.data.cmt=null;
       initialCmts()
+      scope.data.cmt=null;
     })
     .catch(function(err){
       console.log('this is a post comment error', err);

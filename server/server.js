@@ -40,10 +40,8 @@ app.get('/messages',function(req,res){
 
 
 app.post('/messages',function(req,res){
-  console.log('############', req.body)
   knex('messages').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink: req.body.photolink, msgImageUrl: req.body.msgImageUrl})
   .then(function () {
-    console.log('this was added')
     res.status(201).end()
   })
 })
@@ -59,7 +57,6 @@ app.get('/comments',function(req,res){
 })
 
 app.post('/comments',function(req,res){
-  console.log('############ comments post', req.body)
   knex('comments').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink:req.body.photolink, msgId: req.body.msgId})
   .then(function () {
     console.log('this comment was added')
@@ -69,7 +66,6 @@ app.post('/comments',function(req,res){
 
 // Updating Likes in the  Database. 
 app.post('/likes',function(req,res){
-  console.log('############ in likessss', req.body)
   knex('messages')
   .where({ id: req.body.content})
   .update({ likes: req.body.like})
