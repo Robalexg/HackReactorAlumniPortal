@@ -36,7 +36,7 @@ app.get('/messages',function(req,res){
   })
 })
 
-app.post('/messages',function(req,res){
+ app.post('/messages',function(req,res){
   console.log('############', req.body)
   knex('messages').insert({content: req.body.content})
   .then(function () {
