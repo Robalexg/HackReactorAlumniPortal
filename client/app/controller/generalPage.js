@@ -23,7 +23,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
         .then(function(){
           initialMsgs();
           $scope.msg=null;
-          $scope.imgUrl =null;
+          $scope.imgUrl=null;
         })
         .catch(function (error) {
           console.error(error);
@@ -69,6 +69,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
         })
         .on('httpUploadProgress',function(progress) {
               console.log(Math.round(progress.loaded / progress.total * 100) + '% done');
+              $scope.showProgress = Math.round(progress.loaded / progress.total * 100) + '% done';
             });
       }
       else {
