@@ -52,10 +52,6 @@ h1{
     min-height: 150px;
 }
 
-#uploader {
-  max-width: 800px;
-  min-height: 75px;
-}
 
 .comment-item {
     background: #f7f7f7;
@@ -173,6 +169,10 @@ h1{
   padding: 8px;
 }
 
+.cmtlikes {
+  padding: 8px;
+}
+
 .name {
   color: #3b5998;
   font-weight: bold;
@@ -180,6 +180,11 @@ h1{
 
 #camera {
   color:#3b5998;
+}
+
+#campost {
+  position: absolute;
+  top: 75px;
 }
 
 .prevpic {
@@ -231,12 +236,14 @@ h1{
  padding: 35px
 }
 
-
 #HackOverFlow{
   width: 75%;
   margin: auto;
 }
 
+#cmtcard {
+  background: #f7f7f7;
+}
 
 .HackOverPost {
     background: #f7f7f7;

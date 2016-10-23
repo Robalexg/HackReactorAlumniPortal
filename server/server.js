@@ -39,11 +39,10 @@ app.get('/messages',function(req,res){
 })
 
 
+
 app.post('/messages',function(req,res){
-  console.log('############', req.body)
   knex('messages').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink: req.body.photolink, msgImageUrl: req.body.msgImageUrl})
-  .then(function () {
-    console.log('this was added')
+   .then(function () {
     res.status(201).end()
   })
 })
@@ -59,7 +58,6 @@ app.get('/comments',function(req,res){
 })
 
 app.post('/comments',function(req,res){
-  console.log('############ comments post', req.body)
   knex('comments').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink:req.body.photolink, msgId: req.body.msgId})
   .then(function () {
     console.log('this comment was added')
@@ -69,7 +67,6 @@ app.post('/comments',function(req,res){
 
 // Updating Likes in the  Database. 
 app.post('/likes',function(req,res){
-  console.log('############ in likessss', req.body)
   knex('messages')
   .where({ id: req.body.content})
   .update({ likes: req.body.like})
@@ -81,7 +78,6 @@ app.post('/likes',function(req,res){
 })
 
 app.post('/cmtlikes',function(req,res){
-  console.log('############ in cmtlikessss', req.body)
   knex('comments')
   .where({ id: req.body.commentId})
   .update({ likes: req.body.like})
@@ -121,7 +117,6 @@ app.get('/users',function(req,res){
 })
 
 app.get('/sessions',function(req,res){
-  console.log('Cookies: ', req.cookies.sessionId)
   knex("sessions")
   .select('userId')
   .where('sessionId', req.cookies.sessionId)
@@ -131,7 +126,6 @@ app.get('/sessions',function(req,res){
 })
 
 app.post('/user',function(req,res){
-  console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body.userId)
   knex("user")
   .select('*')
   .where('id', req.body.userId)
