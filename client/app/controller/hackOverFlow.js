@@ -52,7 +52,11 @@ angular.module('reactorlounge.hackOverFlow', [])
       });
   }
 
-
+ $scope.creds = {
+     bucket: 'reactorlounge',
+     access_key: 'AKIAJNO7VBBIJVDRHMMQ',
+     secret_key: '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'
+   }
 
 
 $scope.addLike = function(status, id, likes){  

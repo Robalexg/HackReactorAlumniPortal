@@ -1,7 +1,5 @@
 
 <div id='HackOverFlow'>
-
-
 <div class='HackOverPost'>
   <form ng-submit="postQue()" id='submit'>
     <textarea ng-model='question' id="textarea" placeholder="Please Post Your Question"></textarea>
@@ -13,37 +11,62 @@
 
 <ul class="collapsible" data-collapsible="accordion">
    <li id="licollapse" ng-repeat="message in data.msgs">
-       <div class="collapsible-header"><i class="fa fa-expand" aria-hidden="true"></i>{{message.content}}</div>
-       <div class="collapsible-body">
-           <div ng-repeat='answers in data.answers'>
-           <span ng-if="message.ID === answers.qid "> 
-           <span class="card horizontal"> 
-           {{answers.Answer}}    
+     <div class="collapsible-header"><i class="fa fa-expand" aria-hidden="true"></i>
+          
+          <div class='image'>
+            <img class='resize' ng-src={{message.photolink}}>   
+          </div>
+           <div class='namedate'>
+            <p class='name'>{{message.firstName}} {{message.lastName}}</p>
+            <p class='bdbdbd grey-text text-lighten-1' id='datetime'><span title="{{message.created_at | amDateFormat: 'MMMM Do YYYY, h:mm a' }}">{{message.created_at | amCalendar:referenceTime:formats}}</span></p>
+             </div>
+           <div class='postedmsgs'>
+          <p>{{message.Content}}</p>
+         </div>
+        <div class='msgImg' ng-show='message.msgImageUrl'>
+          <img class='showImg' ng-src={{message.msgImageUrl}}>
+        </div>
         
-            <span ng-init="status=false"  ng-click="status =!status; addLike(status,answers.id, answers.likes)"> 
-           <span id= {{answers.id}}><i class="fa fa-thumbs-up"></i> Like 
-            </span> 
-            {{answers.likes}}
-            </span>
-           </span>
+      </div>
+  
+      
+   <div class="collapsible-body">
+      <div ng-repeat='answers in data.answers'> 
 
-           </div> 
-           <div>
-           <textarea ng-model="txtcomment" placeholder="Please Add Your ANswer" style='width:200px'></textarea>
-   <button ng-click=postAnswer(message.ID,txtcomment);> Answer</button></div>
-        
-       </div>
+         <span ng-if="message.id === answers.qid "> 
+            <div class='topcmtwrap'>
+                <div class='cmtimage'>
+                      <img class='resize' ng-src={{answers.photolink}}> 
+                  <div class ="namecontent">
+                   <p class='cmtname'>{{answers.firstName}} {{answers.lastName}}</p>
+                    <p class='cmtcont'> {{answers.Answer}}</p>
+                    <p class='bdbdbd grey-text text-lighten-1' id='datetime'>
+                    <span title="{{answers.created_at | amDateFormat: 'MMMM Do YYYY, h:mm a' }}">{{answers.created_at | amCalendar:referenceTime:formats}}
+                  </span></p>
 
-    </li>
-   <script>
-//Instert this just after closing </li>             
-    $(document).ready(function() {
-    $('.collapsible').collapsible({
-       accordion: true 
-      });
-     });
-    </script>
-</ul>
+                  </div> 
+              </div>
+          </div>
+          </span> 
+      </div>
+           
+        <div>  
+     <textarea ng-model="txtcomment" placeholder="Please Add Your ANswer" style='width:200px'></textarea>
+    <button ng-click=postAnswer(message.id,txtcomment);> Answer</button>
+      </div>
+
+</div>
+
+
+</li>
+       <script>            
+         $(document).ready(function() {
+        $('.collapsible').collapsible({
+         accordion: true 
+         });
+         });
+        </script>
+  </ul>
 
 
 

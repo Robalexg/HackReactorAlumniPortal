@@ -51,6 +51,11 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable("questions",function(table){
     	table.increments("id").primary()
     	table.string("Content");
+      table.string("firstName",200);
+      table.string("lastName",200);
+      table.string("photolink",200);
+      table.string("msgImageUrl", 200);
+      table.timestamp("created_at")
     }).then(function () {
     	console.log("Created questions table");
     }),
@@ -58,7 +63,13 @@ exports.up = function(knex, Promise) {
     knex.schema.createTable("answers",function(table){
     	table.increments("id").primary()
     	table.string("Answer");
-    	table.integer("qid")
+      table.string("firstName",200);
+      table.string("lastName",200);
+      table.string("photolink",200);
+    	table.integer("qid"); 
+      table.integer("likes");
+       table.timestamp("created_at");
+
     }).then(function () {
     	console.log("Created answer table");
     })
