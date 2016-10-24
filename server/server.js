@@ -147,7 +147,7 @@ app.get('/Answers',function(req,res){
     res.status(200).json(table)
   })
   .catch(function(err){
-    console.log('this is a get/messages error', err)
+    console.log('this is a get/Answers error', err)
   })
  })
 

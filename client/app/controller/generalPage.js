@@ -24,6 +24,10 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 //post messages on submit, clear out msg submit field & make a call to initialmsg to fetch msgs
   $scope.postMsg = function(){
     if($scope.picFile){
+      if($scope.file.size > 10585760) {
+      alert('Sorry, file size must be under 10MB');
+      return false;
+      } else {
       $scope.loading = true;
       $scope.upload($scope.picFile, $scope.picFile.name, function(){
          generalFeed.addMsg($scope.msg, $scope.imgUrl)
@@ -37,6 +41,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
           console.error(error);
         });
       })
+    }
     } else {
     generalFeed.addMsg($scope.msg)
     .then(function(){

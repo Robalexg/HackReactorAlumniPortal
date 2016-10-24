@@ -8,7 +8,8 @@ angular.module('reactorlounge', [
   'reactorlounge.hackOverFlow',
   'reactorlounge.overFlowService',
   'reactorlounge.comingSoonPage',
-  'reactorlounge.soon'
+  'reactorlounge.soon',
+  'reactorlounge.search'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
