@@ -8,6 +8,7 @@ var passport = require("passport")
 var uuid = require("uuid")
 var cookieParser = require('cookie-parser')
 
+
 var knex = require('knex')(configKnex.development)
 knex.migrate.latest([configKnex])
 
@@ -89,7 +90,7 @@ app.post('/cmtlikes',function(req,res){
 })
 
 app.get('/questions',function(req,res){
-  knex.select('*').from('questions')
+  knex.select('*').from('questions').orderBy('created_at', 'desc')
   .then(function (table) {
     res.status(200).json(table)
   })
@@ -143,6 +144,7 @@ app.get('/Answers',function(req,res){
  knex('Questions')
 .join('Answers', 'Questions.id', '=', 'Answers.qid')
 .select('Questions.id','Answers.id','Answers.Answer','Answers.qid','Answers.likes','Answers.firstName','Answers.lastName','Answers.photolink')
+bnh
  .then(function (table) { 
     res.status(200).json(table)
   })

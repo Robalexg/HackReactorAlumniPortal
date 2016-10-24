@@ -7,8 +7,8 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 //user s3 credentials
   $scope.creds = {
       bucket: 'reactorlounge',
-      access_key: '', 
-      secret_key: ''
+      access_key: 'AKIAJBNNAS53SFCFAGNQ', 
+      secret_key: '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'
     }
 
     var initialMsgs = function(){
@@ -24,7 +24,7 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 //post messages on submit, clear out msg submit field & make a call to initialmsg to fetch msgs
   $scope.postMsg = function(){
     if($scope.picFile){
-      if($scope.file.size > 10585760) {
+      if($scope.picFile.size > 10585760) {
       alert('Sorry, file size must be under 10MB');
       return false;
       } else {
