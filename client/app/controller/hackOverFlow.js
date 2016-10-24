@@ -20,7 +20,8 @@ angular.module('reactorlounge.hackOverFlow', [])
      overFlow.addAnswer(qid,answer) 
       .then(function(){
 
-       getAnswers();
+       getAnswers(); 
+       getAnswerCount();
         console.log("hellooo Sucesss");
       })
       .catch(function (error) {
@@ -45,7 +46,8 @@ angular.module('reactorlounge.hackOverFlow', [])
     overFlow.addQuestion($scope.question) 
       .then(function(){
         $scope.question=null;
-        getQuestions();
+        getQuestions(); 
+
       })
       .catch(function (error) {
         console.error(error);
@@ -85,6 +87,16 @@ $scope.addLike = function(status, id, likes){
          });
         }
 
+ var getAnswerCount = function(){
+     overFlow.getAnswerCount()
+      .then(function(msg){
+       $scope.data.anscount = msg;
+       console.log('Values from   anscount', msg)
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }
 
 
 overFlow.getCurrentUser()
@@ -96,6 +108,7 @@ overFlow.getCurrentUser()
 
 
 
+getAnswerCount();
 getQuestions(); 
 
 getAnswers();
