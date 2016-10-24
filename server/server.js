@@ -17,8 +17,8 @@ middleware(app,express)
 app.use(cookieParser())
 
 app.get("/auth",function (req,res) {
-  if(req.cookies['session-id']){
-    knex("sessions").where({sessionId:req.cookies['session-id']}).then(function(session){
+  if(req.cookies['sessionId']){
+    knex("sessions").where({sessionId:req.cookies['sessionId']}).then(function(session){
       if(session != 0){
         res.sendStatus(200)      
       }else{
@@ -121,15 +121,6 @@ app.get('/users',function(req,res){
   })
 })
 
-app.get('/user',function(req,res){
-	knex("sessions").where({sessionId:req.cookies.sessionId}).then(function(user){
-		knex("user").where({userId:user.id}).select().then(function(usr){
-			res.status(200).json(usr)
-		})
-
-	})
-})
-
 app.get('/sessions',function(req,res){
   knex("sessions")
   .select('userId')
@@ -180,7 +171,17 @@ app.post('/signout',function(req,res){
 	}
 })
 
+app.get('/currentuser',function (req,res) {
+	if(req.cookies.sessionId){
+		knex("sessions").where({sessionId:req.cookies.sessionId}).then(function (session) {
+			var usrID = session[0].userId
+			knex("user").where({id:usrID}).then(function (user) {
+				res.status(200).json(user)
+			})
+		})
+	}
 
+})
 
 app.post('/Answerlikes',function(req,res){
   console.log('############ in Answer likessss', req.body);

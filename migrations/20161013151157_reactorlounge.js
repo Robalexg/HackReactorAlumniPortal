@@ -82,7 +82,9 @@ exports.down = function(knex, Promise) {
   	knex.schema.dropTable("user"),
     knex.schema.dropTable("comments"),
   	knex.schema.dropTable("messages"),
-    knex.schema.dropTable("sessions")
+    knex.schema.dropTable("sessions"),
+    knex.schema.dropTable("answers"),
+    knex.schema.dropTable("questions")
   ])
 
 };

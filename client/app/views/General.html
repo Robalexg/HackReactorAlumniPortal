@@ -3,11 +3,8 @@
 
 		<a class="waves-effect waves-light btn" id="signOut" ng-click="signOutButton()">Sign Out</a>
 
-<ul id="slide-out" class="side-nav fixed">
-      <li><a href="#!">First Sidebar Link</a></li>
-      <li><a href="#!">Second Sidebar Link</a></li>
-    </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+
 
   <div class='posttimeline'>
     <form ng-submit='postMsg()' id='submit'>
@@ -29,8 +26,6 @@
      </div>
     </div>
   </div>
-
-
   <div class='msgtimeline' ng-if='data.msgs'>
     <div ng-repeat='message in data.msgs track by $index'>
       <div class='card'>
@@ -80,12 +75,7 @@
                     <p class='bdbdbd grey-text text-lighten-1' id='datetime'><span title="{{comment.created_at | amDateFormat: 'MMMM Do YYYY, h:mm a' }}">{{comment.created_at | amCalendar:referenceTime:formats}}</span></p>
                   </div>
                 </div>
-<<<<<<< HEAD
             </div>
-=======
-
-
->>>>>>> cbc2b984d70835d97bd6271474f22b32d22aa46b
               <div class='cmtlikes'> 
               <span ng-init="status=false" ng-click="status =!status; addCmtLike(status, comment.id, comment.likes)">
                 <span id= {{comment.id}}><i class="fa fa-thumbs-up"></i> Like </span> 
@@ -101,6 +91,27 @@
     </div>
   </div>
  
+
+
+		<div id="sideBar">
+
+
+			<ul id="slide-out" class="side-nav fixed">
+			<div id="blahh">
+				<img id="sideBarPic" ng-src={{userphoto}}>
+				<text id="sideBarName"><b>{{username}}</b></text>
+			</div>
+				<div id="line"></div>
+				<li><a href="#!">My profile</a></li>		
+	      <li><a href="/#/overflow">Hack Overflow</a></li>
+	      <li><a href='/#/resources'>Resources</a></li>
+	      <li><a href="/#/events">Events</a></li>
+	      <li><a href="/#/jobs">Jobs</a></li>
+	      <li><a href="#">Logout</a></li>
+	    </ul>
+	    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+		</div>
+
 
 </div>
 

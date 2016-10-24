@@ -99,6 +99,13 @@ angular.module('reactorlounge.services', [])
    		method: "POST",
    		url: '/signout'
    	})
+   },
+
+   getCurrentUser: function () {
+   	return $http({
+   		method: "GET",
+   		url: '/currentuser'
+   	})
    }
 
   }

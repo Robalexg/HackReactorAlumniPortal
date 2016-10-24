@@ -164,6 +164,12 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
   	})
   }
 
+  generalFeed.getCurrentUser().then(function (user) {
+  	$scope.userphoto = user.data[0].photolink;
+
+  	$scope.username = user.data[0].firstName + " " +user.data[0].lastName
+  })
+
  initialMsgs();
  initialCmts();
 
