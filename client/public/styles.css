@@ -310,10 +310,21 @@ h1{
 }
 
 
+.even{
+    background-color: #F8F8FF;
+}
+.odd{
+    background-color: #DCDCDC;
+}
 
 
 
-
+.aeven{
+    background-color: #FFE4B5;
+}
+.aodd{
+    background-color: #FDF5E6;
+}
 
 
 

@@ -30,7 +30,7 @@
 				<li  ng-repeat="message in data.msgs">   
 
 				<!--   id="licollapse" -->
-				<div class="collapsible-header"><i class="fa fa-expand" aria-hidden="true"></i>
+				<div class="collapsible-header"  ng-class-odd="'odd'"  ng-class-even="'even'"><i class="fa fa-expand" aria-hidden="true"></i>
 				<div class='image'>
 				<img class='resize' ng-src={{message.photolink}}>   
 				</div>
@@ -51,10 +51,10 @@
 				</div>
 
 
-				<div class="collapsible-body">
+				<div class="collapsible-body" >
 				<div ng-repeat='answers in data.answers'> 
 				<span ng-if="message.id === answers.qid "> 
-				<div class='card'>
+				<div class='card' ng-class-odd="'aodd'"  ng-class-even="'aeven'">
 				<div class='topcmtwrap'>
 				<div class='cmtimage'>
 				<img class='resize' ng-src={{answers.photolink}}> 
@@ -79,7 +79,7 @@
 				</div>
 				</div> 
 				<div class ="textbox">  
-				<textarea ng-model="txtcomment" placeholder="Please Add Your ANswer" style='width:200px'></textarea>
+				<textarea ng-model="txtcomment" placeholder="Please Add Your ANswer" style='width:680px'></textarea>
 				<button ng-click=postAnswer(message.id,txtcomment);> Answer</button>
 				</div>
 
