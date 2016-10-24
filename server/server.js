@@ -90,6 +90,7 @@ app.post('/cmtlikes',function(req,res){
 
 app.get('/questions',function(req,res){
   knex.select('*').from('questions')
+  .orderBy("created_at",'desc')
   .then(function (table) {
     res.status(200).json(table)
   })
@@ -142,7 +143,8 @@ app.post('/user',function(req,res){
 app.get('/Answers',function(req,res){
  knex('Questions')
 .join('Answers', 'Questions.id', '=', 'Answers.qid')
-.select('Questions.id','Answers.id','Answers.Answer','Answers.qid','Answers.likes','Answers.firstName','Answers.lastName','Answers.photolink')
+.select('Questions.id','Answers.id','Answers.Answer','Answers.qid','Answers.likes','Answers.firstName','Answers.lastName','Answers.photolink','Answers.created_at')
+  .orderBy("created_at",'desc')
  .then(function (table) { 
     res.status(200).json(table)
   })
