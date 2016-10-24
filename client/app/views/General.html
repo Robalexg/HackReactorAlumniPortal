@@ -1,11 +1,6 @@
 
 <div id='gencontainer'>
 
-		<a class="waves-effect waves-light btn" id="signOut" ng-click="signOutButton()">Sign Out</a>
-
-
-
-
   <div class='posttimeline'>
     <form ng-submit='postMsg()' id='submit'>
       <textarea placeholder="What's on your mind?" ng-model='msg' id='textarea'></textarea>
@@ -26,6 +21,7 @@
      </div>
     </div>
   </div>
+
   <div class='msgtimeline' ng-if='data.msgs'>
     <div ng-repeat='message in data.msgs track by $index'>
       <div class='card'>
@@ -93,7 +89,7 @@
  
 
 
-		<div id="sideBar">
+	<div id="sideBar">
 
 
 			<ul id="slide-out" class="side-nav fixed">
@@ -102,15 +98,15 @@
 				<text id="sideBarName"><b>{{username}}</b></text>
 			</div>
 				<div id="line"></div>
-				<li><a href="#!">My profile</a></li>		
+				<li class ="waves-effect"><a href="">My profile</a></li>	
 	      <li><a href="/#/overflow">Hack Overflow</a></li>
 	      <li><a href='/#/resources'>Resources</a></li>
 	      <li><a href="/#/events">Events</a></li>
 	      <li><a href="/#/jobs">Jobs</a></li>
-	      <li><a href="#">Logout</a></li>
+	      <li><a ng-click = "signOutButton()" href="">Logout</a></li>
 	    </ul>
 	    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-		</div>
+	</div>
 
 
 </div>
