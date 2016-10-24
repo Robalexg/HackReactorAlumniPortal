@@ -99,7 +99,7 @@ $scope.addLike = function(status, id, likes){
   }
 
 
-overFlow.getCurrentUser()
+	overFlow.getCurrentUser()
     .then(function (user) {
       console.log('this is the user', user)
       $scope.userphoto = user.data[0].photolink;
