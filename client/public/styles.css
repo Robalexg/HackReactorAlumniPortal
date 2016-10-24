@@ -337,10 +337,18 @@ h1{
 }
 
 
+.text-stack-img {
+	max-width: 100%;
+	height: auto;
+}
 
+/*#sideBar{
+	background-color: #3B5998;
+}*/
 
-
-
+ul#slide-out.side-nav.fixed{
+	background-color: #3B5998
+}
 
 
 

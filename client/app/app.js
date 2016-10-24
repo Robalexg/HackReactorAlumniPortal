@@ -8,7 +8,8 @@ angular.module('reactorlounge', [
   'reactorlounge.hackOverFlow',
   'reactorlounge.overFlowService',
   'reactorlounge.comingSoonPage',
-  'reactorlounge.soon'
+  'reactorlounge.soon',
+  'xeditable'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
@@ -52,7 +53,7 @@ angular.module('reactorlounge', [
         redirectTo: '/'
       });
     // $httpProvider.interceptors.push('AttachTokens');
-	}]).run(['$http','$window',function ($http,$window,$location) {
+	}]).run(['$http','$window',  '$location', 'editableOptions', function ($http, $window, $location, editableOptions) {
    $http({
       method: "GET",
       url: "/auth"
