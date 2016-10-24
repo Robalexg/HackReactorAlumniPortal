@@ -217,7 +217,7 @@ h1{
 
 #campost {
   position: absolute;
-  top: 75px;
+  top: 30%;
 }
 
 .prevpic {
@@ -307,6 +307,7 @@ h1{
 } 
 
 .collapsible-body{
+<<<<<<< HEAD
   background-color: #F5F5F5;
 }
 
@@ -356,6 +357,19 @@ h1{
 
 
 
+=======
+  background-color: red;
+
+
+}
+
+
+.Questionhead tr:nth-child(odd) {
+  background-color: red;
+  color: red;
+}
+
+>>>>>>> a27bedfcd0f2335fbd3e45ddee56172632188587
 
 
 

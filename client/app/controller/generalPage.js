@@ -7,8 +7,8 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 //user s3 credentials
   $scope.creds = {
       bucket: 'reactorlounge',
-      access_key: 'AKIAJBNNAS53SFCFAGNQ', 
-      secret_key: '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'
+      access_key: '', 
+      secret_key: ''
     }
 
     var initialMsgs = function(){
