@@ -1,0 +1,49 @@
+
+<div id='HackOverFlow'>
+
+
+<div class='HackOverPost'>
+  <form ng-submit="postQue()" id='submit'>
+    <textarea ng-model='question' id="textarea" placeholder="Please Post Your Question"></textarea>
+    <button> Question</button>
+  </form>
+</div>
+
+<div>
+<div id='messages' ng-repeat='message in data.msgs'>
+  <div class="card horizontal"> 
+
+  
+
+  <p>Question:{{message.content}}</p>  
+  <div id='answers'  ng-repeat='answers in data.answers'>  
+   
+   <span ng-if="message.ID === answers.qid "> 
+
+     <span class="card horizontal"> 
+
+      {{answers.Answer}}
+    </span>
+
+     </span>
+     </div>
+
+  <p> <textarea ng-model="txtcomment" placeholder="Please Add Your ANswer" style='width:200px'></textarea>
+   <button ng-click=postAnswer(message.ID,txtcomment);> Answer</button><p>
+      
+             
+    </div>
+    <div class='msgpad'></div>
+         
+  </div>
+</div>
+</div>
+
+
+</div>
+
+
+
+
+
+
