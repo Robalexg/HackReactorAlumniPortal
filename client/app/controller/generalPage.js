@@ -5,10 +5,10 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
   // $scope.data.msgs = [{userId: 'Christina', created_at: 'October 15', content: 'This is great'}, {name: 'Robert', date: 'October 15', message: 'Im a genius'}, {name: 'Kendrick', date: 'October 15', message: 'I frequent Youtuber'}, {name: 'Tulasi', date: 'October 15', message: 'Im awesome'}];
   $scope.exampleDate = moment().hour(8).minute(0).second(0).toDate();
 //user s3 credentials
-  $scope.creds = {
+ $scope.creds = {
       bucket: 'reactorlounge',
-      access_key: '', 
-      secret_key: ''
+      access_key: 'AKIAJBNNAS53SFCFAGNQ', 
+      secret_key: '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'
     }
 
     var initialMsgs = function(){
