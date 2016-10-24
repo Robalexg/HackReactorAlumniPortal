@@ -51,9 +51,7 @@ angular.module('reactorlounge', [
       method: "GET",
       url: "/auth"
     }).then(function () {
-      $window.location.href = '/#/search'
-    }).catch(function () {
-      $window.location.href = '/#/'
+      $window.location.href = '/#/general'
     })
   }]);
 

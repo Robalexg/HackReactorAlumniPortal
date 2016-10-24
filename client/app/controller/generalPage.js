@@ -1,6 +1,6 @@
 angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
 
-.controller('GeneralFeedController', ['$scope', 'generalFeed', 'moment', 'Upload', '$timeout', function ($scope, generalFeed, moment, Upload, $timeout ) {
+.controller('GeneralFeedController', ['$scope', 'generalFeed', 'moment', 'Upload', '$timeout','$window',function ($scope, generalFeed, moment, Upload, $timeout, $window ) {
    $scope.data = {}
   // $scope.data.msgs = [{userId: 'Christina', created_at: 'October 15', content: 'This is great'}, {name: 'Robert', date: 'October 15', message: 'Im a genius'}, {name: 'Kendrick', date: 'October 15', message: 'I frequent Youtuber'}, {name: 'Tulasi', date: 'October 15', message: 'Im awesome'}];
   $scope.exampleDate = moment().hour(8).minute(0).second(0).toDate();
@@ -78,7 +78,8 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
       }
     }
 
-  $scope.addLike = function(status, id, likes){ 
+  $scope.addLike = function(status, id, likes){  
+
     if (status){
       likes++; 
       $scope.data.msgs.forEach(function(message){
@@ -105,16 +106,18 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
     });
   }
 
-  $scope.addCmtLike = function(status, id, likes){ 
+  $scope.addCmtLike = function(status, id, likes){
+     console.log("in the comment add like", status, id, likes); 
     if (status){
       likes++; 
       $scope.data.cmts.forEach(function(comment){
         if (comment.id === id){
         comment.likes++;
+
         angular.element('#'+ comment.id).addClass('blue-text'); 
         }
       })     
-    } else {
+      } else {
       likes--; 
       $scope.data.cmts.forEach(function(comment){
         if (comment.id === id){
@@ -155,7 +158,18 @@ angular.module('reactorlounge.generalPage', ['angularMoment', 'ngFileUpload'])
     })
   }
 
-//gets messags and comments on load
+  $scope.signOutButton = function () {
+  	generalFeed.signOut().then(function(){
+  		$window.location.href = "/#/"
+  	})
+  }
+
+  generalFeed.getCurrentUser().then(function (user) {
+  	$scope.userphoto = user.data[0].photolink;
+
+  	$scope.username = user.data[0].firstName + " " +user.data[0].lastName
+  })
+
  initialMsgs();
  initialCmts();
 

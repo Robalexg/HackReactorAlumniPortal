@@ -241,6 +241,9 @@ h1{
  padding: 35px
 }
 
+
+
+
 #HackOverFlow{
   width: 75%;
   margin: auto;
@@ -260,3 +263,73 @@ h1{
     max-width: 600px;
     min-height: 20px;
 }
+
+#signOut{
+	float:right;
+	margin-top: 5%;
+}
+
+.single-collapsible{
+ .collapsible{
+    box-shadow: none;
+    margin-bottom: -1rem;
+  }
+
+ .collapsible-header{padding: 0;}
+} 
+
+.collapsible-body{
+  background-color: #F5F5F5;
+}
+
+#sideBarPic{
+	height:200px;
+	width:200px;
+	margin-left:15%;
+	margin-bottom:1%;
+	margin-top:5%;
+	background-color:transparent;
+	border-radius:2200px;
+}
+
+
+#line{
+	width:100%;
+	height:1px;
+	background-color:black;
+}
+
+#blahh{
+
+}
+
+#sideBarName{
+	font-size:200%;
+	margin-left:40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
