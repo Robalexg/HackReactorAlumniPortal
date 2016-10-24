@@ -53,6 +53,49 @@ angular.module('reactorlounge.hackOverFlow', [])
   }
 
 
+$scope.addLike = function(status, id, likes){  
+
+  console.log("Add Like Button Values", "status",status, "ID", id, "Likes", likes);
+     if (status){
+          likes++; 
+         $scope.data.answers.forEach(function(answers){ 
+          console.log("anserrs add like", answers);
+     if (answers.id === id){
+          answers.likes++;
+          angular.element('#'+ answers.id).addClass('blue-text'); 
+          }
+          })     
+         }
+
+   else {
+       likes--; 
+      $scope.data.answers.forEach(function(answers){
+    if (answers.id === id){
+        answers.likes--;
+       angular.element('#'+ answers.id).removeClass('blue-text');
+        }
+        })  
+     }
+     overFlow.addlike(id, likes)
+         .then(function(){
+          console.log("successs in add like");
+            })
+          .catch(function (error) {
+         console.error(error);
+         });
+        }
+
+
+
+overFlow.getCurrentUser()
+    .then(function (user) {
+      console.log('this is the user', user)
+      $scope.userphoto = user.data[0].photolink;
+      $scope.username = user.data[0].firstName + " " +user.data[0].lastName
+    })
+
+
+
 getQuestions(); 
 
 getAnswers();

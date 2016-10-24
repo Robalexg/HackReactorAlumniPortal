@@ -15,15 +15,40 @@ angular.module('reactorlounge.overFlowService', [])
  
      addQuestion: function (que) { 
 
-     console.log("u r in addQuestion");
       return $http({
+        method: 'GET',
+        url: '/sessions'
+      }).then(function(resp){
+        var userId = resp.data[0].userId
+        return $http({
+          method: 'POST',
+          url: '/user',
+          data: {userId: userId}
+        })
+      }).then(function(resp){
+        console.log('this is resp data', resp.data[0])
+        var firstName = resp.data[0].firstName
+        var lastName = resp.data[0].lastName
+        var avatar = resp.data[0].photolink
+       return $http({
         method: 'POST',
         url:    '/questions', 
-         data: {content:que}
+       data: {firstName: firstName, lastName: lastName, content: que,photolink: avatar}
+      
+      })
+      })
+    },
+  
+
+  addlike: function (id,like) {
+     console.log("u r in the Addddddd Like ","id",id , "incremented like",like);
+      return $http({
+        method: 'POST',
+        url:    '/Answerlikes', 
+         data: {content:id,like}
       
       })
     },
-
 
 
     getAnswer: function () {
@@ -33,19 +58,52 @@ angular.module('reactorlounge.overFlowService', [])
       }).then(function(resp) {
         return resp.data
       })
-    } , 
+    }, 
 
-     addAnswer: function (qid,answer) {
-     console.log("u r in addAnswer in Severice", "qid",qid,"answer",answer);
+    //  addAnswer: function (qid,answer) {
+    //  console.log("u r in addAnswer in Severice", "qid",qid,"answer",answer);
+    //   return $http({
+    //     method: 'POST',
+    //     url:    '/Answers', 
+    //      data: {content:qid,answer}
+      
+    //   })
+    // }
+
+     addAnswer: function (qid,answer) { 
+      console.log("hack over post service","qid",qid,"answer", answer)
       return $http({
+        method: 'GET',
+        url: '/sessions'
+      }).then(function(resp){
+        var usersId = resp.data[0].userId
+        return $http({
+          method: 'POST',
+          url: '/user',
+          data: {userId: usersId}
+        })
+      }).then(function(resp){
+        console.log('this is resp data', resp.data[0])
+        var first = resp.data[0].firstName
+        var last = resp.data[0].lastName
+        var avi = resp.data[0].photolink
+          return $http({
         method: 'POST',
         url:    '/Answers', 
-         data: {content:qid,answer}
-      
+          data: {firstName: first, lastName: last, photolink: avi, Answer: answer, qid : qid}
+        })
       })
-    }
+    },
 
+    getCurrentUser: function () {
+    return $http({
+    method: "GET",
+    url: '/currentuser'
+    })
+   }
 
+  }
 
-}
+     
+
 }]);

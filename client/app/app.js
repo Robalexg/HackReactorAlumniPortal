@@ -6,7 +6,9 @@ angular.module('reactorlounge', [
   'reactorlounge.loginPage',
   'reactorlounge.searchPage',
   'reactorlounge.hackOverFlow',
-  'reactorlounge.overFlowService'
+  'reactorlounge.overFlowService',
+  'reactorlounge.comingSoonPage',
+  'reactorlounge.soon'
 ])
 	.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider){
 	 $routeProvider
@@ -32,15 +34,19 @@ angular.module('reactorlounge', [
 
       .when('/resources', {
       templateUrl: '../app/views/comingSoonPage.html',
+      controller: 'ComingSoonController'
     })
       .when('/events', {
       templateUrl: '../app/views/comingSoonPage.html',
+      controller: 'ComingSoonController'
     })
       .when('/lectures', {
       templateUrl: '../app/views/comingSoonPage.html',
+      controller: 'ComingSoonController'
     })
       .when('/jobs', {
       templateUrl: '../app/views/comingSoonPage.html',
+      controller: 'ComingSoonController'
     })
       .otherwise({
         redirectTo: '/'
@@ -51,9 +57,7 @@ angular.module('reactorlounge', [
       method: "GET",
       url: "/auth"
     }).then(function () {
-      $window.location.href = '/#/search'
-    }).catch(function () {
-      $window.location.href = '/#/'
+      $window.location.href = '/#/general'
     })
   }]);
 
