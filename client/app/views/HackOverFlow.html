@@ -5,18 +5,15 @@
     <textarea ng-model='question' id="textarea" placeholder="Please Post Your Question"></textarea>
     <button> Question</button>
   </form>
-</div>
+</div> 
 
-<div>
-
-<ul class="collapsible" data-collapsible="accordion">
-   <li id="licollapse" ng-repeat="message in data.msgs">  
-   
-  
-
+<div> 
 
  
-     
+  <ul class="collapsible" data-collapsible="accordion">
+   <li  ng-repeat="message in data.msgs">   
+
+  <!--   id="licollapse" -->
    <div class="collapsible-header"><i class="fa fa-expand" aria-hidden="true"></i>
           <div class='image'>
             <img class='resize' ng-src={{message.photolink}}>   
@@ -82,8 +79,6 @@
          });
         </script>
   </ul>
-
-
 
 
 </div>

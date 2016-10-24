@@ -271,7 +271,7 @@ line-height: 20px;
 } 
 
 .collapsible-body{
-  background-color: #F5F5F5;
+  background-color: red;
 
 
 }
@@ -282,8 +282,8 @@ line-height: 20px;
   color: red;
 }
 
-.licollapse{
-    color: red;
-}
+
+
+
 
 
