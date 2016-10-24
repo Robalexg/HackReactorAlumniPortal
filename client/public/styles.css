@@ -156,7 +156,35 @@ h1{
   width: 35%;
   left: 10px;
 }
+.profile-container {
+	padding-top: 20px;
+	width: 60%;
+	margin: auto;
+	background-color: white;
+	padding: 20px;
+	 /*box-shadow: 10px 10px 5px #888888;*/
 
+};
+
+.center {
+	text-align: center;
+}
+
+.admin-data {
+	padding-left: 10px;
+}
+
+.admin {
+	padding-bottom: 20px;
+}
+
+.profilePic {
+	border: 1px solid black;
+}
+
+.profile-background {
+	background-color: #3B5998;
+}
 #datetime {
   line-height: 0px;
   font-size: 12px;
