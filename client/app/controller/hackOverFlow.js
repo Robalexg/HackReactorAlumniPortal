@@ -54,12 +54,6 @@ angular.module('reactorlounge.hackOverFlow', [])
       });
   }
 
- $scope.creds = {
-     bucket: 'reactorlounge',
-     access_key: 'AKIAJNO7VBBIJVDRHMMQ',
-     secret_key: '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'
-   }
-
 
 $scope.addLike = function(status, id, likes){  
 
@@ -103,6 +97,15 @@ $scope.addLike = function(status, id, likes){
         console.error(error);
       });
   }
+
+
+	overFlow.getCurrentUser()
+    .then(function (user) {
+      console.log('this is the user', user)
+      $scope.userphoto = user.data[0].photolink;
+      $scope.username = user.data[0].firstName + " " +user.data[0].lastName
+    })
+
 
 
 getAnswerCount();

@@ -94,6 +94,20 @@ angular.module('reactorlounge.services', [])
       })
     },
 
+   signOut: function(){
+   	return $http({
+   		method: "POST",
+   		url: '/signout'
+   	})
+   },
+
+   getCurrentUser: function () {
+   	return $http({
+   		method: "GET",
+   		url: '/currentuser'
+   	})
+   }
+
   }
 
 

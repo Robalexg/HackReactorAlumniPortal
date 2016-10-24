@@ -17,8 +17,8 @@ middleware(app,express)
 app.use(cookieParser())
 
 app.get("/auth",function (req,res) {
-  if(req.cookies['session-id']){
-    knex("sessions").where({sessionId:req.cookies['session-id']}).then(function(session){
+  if(req.cookies['sessionId']){
+    knex("sessions").where({sessionId:req.cookies['sessionId']}).then(function(session){
       if(session != 0){
         res.sendStatus(200)      
       }else{
@@ -39,11 +39,10 @@ app.get('/messages',function(req,res){
 })
 
 
+
 app.post('/messages',function(req,res){
-  console.log('############', req.body)
   knex('messages').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink: req.body.photolink, msgImageUrl: req.body.msgImageUrl})
-  .then(function () {
-    console.log('this was added')
+   .then(function () {
     res.status(201).end()
   })
 })
@@ -59,7 +58,6 @@ app.get('/comments',function(req,res){
 })
 
 app.post('/comments',function(req,res){
-  console.log('############ comments post', req.body)
   knex('comments').insert({content: req.body.content, firstName: req.body.firstName, lastName: req.body.lastName, photolink:req.body.photolink, msgId: req.body.msgId})
   .then(function () {
     console.log('this comment was added')
@@ -69,7 +67,6 @@ app.post('/comments',function(req,res){
 
 // Updating Likes in the  Database. 
 app.post('/likes',function(req,res){
-  console.log('############ in likessss', req.body)
   knex('messages')
   .where({ id: req.body.content})
   .update({ likes: req.body.like})
@@ -81,7 +78,6 @@ app.post('/likes',function(req,res){
 })
 
 app.post('/cmtlikes',function(req,res){
-  console.log('############ in cmtlikessss', req.body)
   knex('comments')
   .where({ id: req.body.commentId})
   .update({ likes: req.body.like})
@@ -94,6 +90,7 @@ app.post('/cmtlikes',function(req,res){
 
 app.get('/questions',function(req,res){
   knex.select('*').from('questions')
+  .orderBy("created_at",'desc')
   .then(function (table) {
     res.status(200).json(table)
   })
@@ -126,7 +123,6 @@ app.get('/users',function(req,res){
 })
 
 app.get('/sessions',function(req,res){
-  console.log('Cookies: ', req.cookies.sessionId)
   knex("sessions")
   .select('userId')
   .where('sessionId', req.cookies.sessionId)
@@ -136,7 +132,6 @@ app.get('/sessions',function(req,res){
 })
 
 app.post('/user',function(req,res){
-  console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body.userId)
   knex("user")
   .select('*')
   .where('id', req.body.userId)
@@ -148,7 +143,8 @@ app.post('/user',function(req,res){
 app.get('/Answers',function(req,res){
  knex('Questions')
 .join('Answers', 'Questions.id', '=', 'Answers.qid')
-.select('Questions.id','Answers.id','Answers.Answer','Answers.qid','Answers.likes','Answers.firstName','Answers.lastName','Answers.photolink')
+.select('Questions.id','Answers.id','Answers.Answer','Answers.qid','Answers.likes','Answers.firstName','Answers.lastName','Answers.photolink','Answers.created_at')
+  .orderBy("created_at",'desc')
  .then(function (table) { 
     res.status(200).json(table)
   })
@@ -167,7 +163,27 @@ app.post('/Answers',function(req,res){
   })
 })
 
+app.post('/signout',function(req,res){
+	if(req.cookies.sessionId){
+		knex("sessions").where({sessionId:req.cookies.sessionId}).del().then(function () {
+			res.clearCookie("sessionId")
+			console.log("deleted")
+			res.status(200).end()
+		})
+	}
+})
 
+app.get('/currentuser',function (req,res) {
+	if(req.cookies.sessionId){
+		knex("sessions").where({sessionId:req.cookies.sessionId}).then(function (session) {
+			var usrID = session[0].userId
+			knex("user").where({id:usrID}).then(function (user) {
+				res.status(200).json(user)
+			})
+		})
+	}
+
+})
 
 app.post('/Answerlikes',function(req,res){
   console.log('############ in Answer likessss', req.body);
