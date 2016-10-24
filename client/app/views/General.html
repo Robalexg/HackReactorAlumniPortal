@@ -1,23 +1,25 @@
 
+<div id=background>
 <div id='gencontainer'>
 
   <div class='posttimeline'>
     <form ng-submit='postMsg()' id='submit'>
-      <textarea placeholder="What's on your mind?" ng-model='msg' id='textarea'></textarea>
-      <input type='submit' id= 'buttonpost' value='post'/></input>
+    <textarea placeholder="What's on your mind?" ng-model='msg' id='textarea'></textarea>
+    <input type='submit' id= 'buttonpost' value='post'/></input>
     </form>
     <div id='uploader'>
       <div>
-          <img class='prevpic' ngf-thumbnail="picFile">
+          <img class='prevpic' ngf-thumbnail='picFile' ng-if='!loading'>
+          <img ng-src= './img/loading.gif' ng-show='loading'> 
       </div>
       <div id='campost'>
-      <a ngf-select ng-model="picFile"><i class='fa fa-camera fa-2x' id='camera'></i></a>
+      <a ngf-select ng-model='picFile'><i class='fa fa-camera fa-2x' id='camera'></i></a>
       </div>
-      <span class="progress" ng-show="progress >= 0">
-        <div style="width:{{progress}}%" ng-bind="progress + '%'">{{progress}}</div>
+      <span class='progress' ng-show='progress >= 0'>
+        <div style='width:{{progress}}%' ng-bind="progress + '%'">{{progress}}</div>
       </span>
-      <span ng-show="result">Upload Successful</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+      <span ng-show='result'>Upload Successful</span>
+      <span class='err' ng-show='errorMsg'>{{errorMsg}}</span>
      </div>
     </div>
   </div>
@@ -41,8 +43,8 @@
           <img class='showImg' ng-src={{message.msgImageUrl}}>
         </div>
         <div class='msglikes'> 
-          <span ng-init="status=false"  ng-click="status =!status; addLike(status,message.id, message.likes)"> 
-            <span id= {{message.id}}><i class="fa fa-thumbs-up"></i> Like 
+          <span ng-init='status=false'  ng-click='status =!status; addLike(status,message.id, message.likes)'> 
+            <span id= {{message.id}}><i class='fa fa-thumbs-up'></i> Like 
             </span> 
           </span>
            {{message.likes}}
@@ -51,21 +53,21 @@
       <div class='commentwrap' >
         <div class='comment-item'>
           <form ng-submit='postCmt(message.id)' id='submitCmt'>
-            <textarea placeholder="Write a comment" ng-model='data.cmt[$index]' id='textarea2'></textarea>
+            <textarea placeholder='Write a comment' ng-model='data.cmt[$index]' id='textarea2'></textarea>
             <div class='postpad' ng-if='data.cmt != null'>
               <input type='submit' id= 'buttonpost2' value='post'/></input>
             </div>
           </form>
         </div>
-        <div class="cmttimeline">
-          <div id="cmtcard">
+        <div class='cmttimeline'>
+          <div id='cmtcard'>
           <div ng-repeat='comment in data.cmts |limitTo'>
-          <span ng-if="message.id === comment.msgId ">
+          <span ng-if='message.id === comment.msgId '>
             
               <div class='topcmtwrap'>
                 <div class='cmtimage'>
                   <img class='resize' ng-src={{comment.photolink}}> 
-                  <div class ="namecontent">
+                  <div class ='namecontent'>
                    <p class='cmtname'>{{comment.firstName}} {{comment.lastName}}</p>
                     <p class='cmtcont'> {{comment.content}}</p>
                     <p class='bdbdbd grey-text text-lighten-1' id='datetime'><span title="{{comment.created_at | amDateFormat: 'MMMM Do YYYY, h:mm a' }}">{{comment.created_at | amCalendar:referenceTime:formats}}</span></p>
@@ -73,8 +75,8 @@
                 </div>
             </div>
               <div class='cmtlikes'> 
-              <span ng-init="status=false" ng-click="status =!status; addCmtLike(status, comment.id, comment.likes)">
-                <span id= {{comment.id}}><i class="fa fa-thumbs-up"></i> Like </span> 
+              <span ng-init='status=false' ng-click='status =!status; addCmtLike(status, comment.id, comment.likes)'>
+                <span id= {{comment.id}}><i class='fa fa-thumbs-up'></i> Like </span> 
                 </span>
                 {{comment.likes}}
               </div>
@@ -88,9 +90,7 @@
   </div>
  
 
-
-	<div id="sideBar">
-
+		<div id="sideBar">
 
 			<ul id="slide-out" class="side-nav fixed">
 			<div id="blahh">
@@ -109,6 +109,7 @@
 	</div>
 
 
+</div>
 </div>
 
 

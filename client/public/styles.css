@@ -3,6 +3,8 @@ h1{
 	text-align: center; 
 }
 
+
+
 .btn-facebook{
 	background-color: #3B5998;
 	margin-left: 40%;
@@ -52,6 +54,9 @@ h1{
     min-height: 150px;
 }
 
+#background {
+  background: #f7f7f7;
+}
 
 .comment-item {
     background: #f7f7f7;

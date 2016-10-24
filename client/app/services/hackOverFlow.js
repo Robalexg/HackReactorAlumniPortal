@@ -95,6 +95,13 @@ angular.module('reactorlounge.overFlowService', [])
       })
     },
 
+    getCurrentUser: function () {
+    return $http({
+    method: "GET",
+    url: '/currentuser'
+    })
+   }
+
   }
 
      
