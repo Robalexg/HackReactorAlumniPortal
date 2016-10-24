@@ -3,8 +3,6 @@ h1{
 	text-align: center; 
 }
 
-
-
 .btn-facebook{
 	background-color: #3B5998;
 	margin-left: 40%;
@@ -54,9 +52,6 @@ h1{
     min-height: 150px;
 }
 
-#background {
-  background: #f7f7f7;
-}
 
 .comment-item {
     background: #f7f7f7;
@@ -94,16 +89,6 @@ h1{
     position: relative;
     margin-left: 85%;
     padding: 8px;
-}
-
-.upload{
-  position: absolute;
-  float: left;
-  overflow: hidden;
-  padding: 8px;
-  display: block;
-  height: 40px;
-  color: #3b5998;
 }
 
 #textarea{
@@ -216,8 +201,9 @@ h1{
 }
 
 #campost {
-  position: absolute;
-  top: 30%;
+  position: relative;
+  top: -60px;
+  float: left;
 }
 
 .prevpic {
@@ -235,7 +221,7 @@ h1{
 }
 
 .msgImg {
-   height: 350px;
+  height: 350px;
   width: 500px;
   padding: 8px;
   display: block;
@@ -266,11 +252,9 @@ h1{
 }
 
 #uploader {
- padding: 35px
+ padding: 35px;
+ position: relative
 }
-
-
-
 
 #HackOverFlow{
   width: 75%;
@@ -278,6 +262,10 @@ h1{
 }
 
 #cmtcard {
+  background: #f7f7f7;
+}
+
+#background {
   background: #f7f7f7;
 }
 
@@ -307,7 +295,6 @@ h1{
 } 
 
 .collapsible-body{
-<<<<<<< HEAD
   background-color: #F5F5F5;
 }
 
@@ -337,39 +324,11 @@ h1{
 	margin-left:40px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-=======
-  background-color: red;
-
-
-}
-
-
 .Questionhead tr:nth-child(odd) {
   background-color: red;
   color: red;
 }
 
->>>>>>> a27bedfcd0f2335fbd3e45ddee56172632188587
 
 
 
