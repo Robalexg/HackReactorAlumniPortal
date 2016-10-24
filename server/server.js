@@ -182,6 +182,18 @@ app.post('/Answerlikes',function(req,res){
    })
 
 
+
+
+
+app.get('/AnswersCount',function(req,res){
+  
+  knex.select('*').from('Answers')
+  .then(function (id) {
+      res.status(200).json(id)  
+  })
+})
+
+
 app.listen(3000)
 console.log("Listening on port 3000")
 

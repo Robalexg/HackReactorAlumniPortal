@@ -255,10 +255,9 @@ line-height: 20px;
   padding-bottom: 20px;
   text-align: justify;
   width: 500px;
-  color: red;
-  /*background: #f7f7f7;*/
+  color: red  /*background: #f7f7f7;
  /*  background-color: #F0F8FF;
-}*/*/
+}/*/
 
 
 
@@ -276,3 +275,15 @@ line-height: 20px;
 
 
 }
+
+
+.Questionhead tr:nth-child(odd) {
+  background-color: red;
+  color: red;
+}
+
+.licollapse{
+    color: red;
+}
+
+

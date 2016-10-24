@@ -60,15 +60,16 @@ angular.module('reactorlounge.overFlowService', [])
       })
     }, 
 
-    //  addAnswer: function (qid,answer) {
-    //  console.log("u r in addAnswer in Severice", "qid",qid,"answer",answer);
-    //   return $http({
-    //     method: 'POST',
-    //     url:    '/Answers', 
-    //      data: {content:qid,answer}
-      
-    //   })
-    // }
+   
+  getAnswerCount: function () {
+      return $http({
+        method: 'GET',
+        url: '/AnswersCount'
+      }).then(function(resp) {
+        return resp.data
+      })
+    } , 
+
 
      addAnswer: function (qid,answer) { 
       console.log("hack over post service","qid",qid,"answer", answer)
